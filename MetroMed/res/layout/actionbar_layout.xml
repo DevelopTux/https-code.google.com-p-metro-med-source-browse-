@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ActionBarCompat" >
+ 	
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:clickable="false"
+        android:paddingLeft="15dip"
+        android:scaleType="center"
+        android:src="@drawable/logo_galaxy_action_bar"/>
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:clickable="false"
+        android:paddingLeft="15dip"
+        android:scaleType="center"
+        android:src="@drawable/logo_galaxy_action_bar" android:layout_marginLeft="130dp" android:id="@+id/galaxylogoimg"/>
+
+    
+ 
+</LinearLayout>
+

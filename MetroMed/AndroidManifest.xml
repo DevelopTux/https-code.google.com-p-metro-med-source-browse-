@@ -10,13 +10,20 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".MetroMedActivity"
-            android:label="@string/app_name" >
+            android:name=".activities.commons.SplashAppActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+	        android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity  android:name=".activities.commons.DashboardMainActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
     </application>
 

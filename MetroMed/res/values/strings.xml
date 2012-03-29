@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MetroMedActivity!</string>
-    <string name="app_name">MetroMed</string>
+    <string name="app_name">Metro Medellín</string>
+    <!-- DashBoard Buttons Strings-->
+    <string name="dashboard_metro_maps">Mapas Metro</string>
+    <string name="dashboard_metro_around">Estaciones cerca</string>
+    
 
 </resources>

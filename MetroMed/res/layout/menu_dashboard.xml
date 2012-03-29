@@ -1,0 +1,22 @@
+<co.droidforum.metromed.activities.commons.DashboardLayoutActivity
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:background="@drawable/background">
+     <Button
+        android:id="@+id/buttonSendMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/dashboard_metro_maps"
+        android:text="@string/dashboard_metro_maps" />
+	<Button
+        android:id="@+id/buttonPayMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/dashboard_metro_around"
+        android:text="@string/dashboard_metro_around" />
+
+</co.droidforum.metromed.activities.commons.DashboardLayoutActivity>
