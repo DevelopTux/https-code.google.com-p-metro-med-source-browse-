@@ -5,14 +5,14 @@
     android:layout_weight="1"
     android:background="@drawable/background">
      <Button
-        android:id="@+id/buttonSendMoney"
+        android:id="@+id/buttonMapaMetro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/dashboard_metro_maps"
         android:text="@string/dashboard_metro_maps" />
 	<Button
-        android:id="@+id/buttonPayMoney"
+        android:id="@+id/buttonEstacionesCercanas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DashboardButton"

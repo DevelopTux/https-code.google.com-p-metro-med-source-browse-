@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class DashboardMainActivity extends Activity {
@@ -19,6 +21,7 @@ public class DashboardMainActivity extends Activity {
 	 * Elementos de la pantalla
 	 */
 	private ImageView galaxyLogoImg;
+	private Button buttonMapaMetro;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class DashboardMainActivity extends Activity {
 		 * Programando los eventos de cada elemento de la pantalla 
 		 */
 		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
+		buttonMapaMetro = (Button)findViewById(R.id.buttonMapaMetro);
 		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
 		    public void onClick(View v){
 		        Intent intent = new Intent();
@@ -38,6 +42,12 @@ public class DashboardMainActivity extends Activity {
 		        intent.setData(Uri.parse("http://www.galaxymovil.com"));
 		        startActivity(intent);
 		    }
+		});
+		
+		buttonMapaMetro.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {			
+				
+			}
 		});
 	}
 }
