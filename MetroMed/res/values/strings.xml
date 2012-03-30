@@ -5,6 +5,7 @@
     <!-- DashBoard Buttons Strings-->
     <string name="dashboard_metro_maps">Mapa Metro</string>
     <string name="dashboard_metro_around">Estaciones cercanas</string>
-    
+    <string name="url_galaxymovil">http://www.galaxymovil.com</string>
+    <string name="msg_toast_carga_mapa">Obteniendo la ubicación actual ... </string>
 
 </resources>

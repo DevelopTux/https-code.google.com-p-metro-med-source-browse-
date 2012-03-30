@@ -15,12 +15,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import co.droidforum.metromed.activities.estacionesmapa.EstacionesCercanasActivity;
 
 public class DashboardMainActivity extends Activity {
 	/*
 	 * Elementos de la pantalla
 	 */
 	private ImageView galaxyLogoImg;
+	private Button buttonEstacionesCercanas;
 	private Button buttonMapaMetro;
 	
 	@Override
@@ -39,9 +41,22 @@ public class DashboardMainActivity extends Activity {
 		        Intent intent = new Intent();
 		        intent.setAction(Intent.ACTION_VIEW);
 		        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-		        intent.setData(Uri.parse("http://www.galaxymovil.com"));
+		        intent.setData(Uri.parse(getResources().getString(R.string.url_galaxymovil)));
 		        startActivity(intent);
 		    }
+		});
+		
+		/*
+		 * Evento para cargar actividad para ver las estaciones cercanas a mi
+		 * Allí se carga un mapa de google en el cual se mostará la ubicación actual
+		 * y las de las estaciones de Metro
+		 */
+		buttonEstacionesCercanas = (Button)findViewById(R.id.buttonEstacionesCercanas);
+		buttonEstacionesCercanas.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(DashboardMainActivity.this, EstacionesCercanasActivity.class);
+				startActivity(intent);				
+			}
 		});
 		
 		buttonMapaMetro.setOnClickListener(new OnClickListener() {
