@@ -7,6 +7,7 @@ package co.droidforum.metromed.activities.commons;
  */
 
 import co.droidforum.metromed.R;
+import co.droidforum.metromed.activities.mapametro.MapaMetroActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -61,7 +62,8 @@ public class DashboardMainActivity extends Activity {
 		
 		buttonMapaMetro.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {			
-				
+				Intent intent = new Intent(DashboardMainActivity.this, MapaMetroActivity.class);
+				startActivity(intent);
 			}
 		});
 	}
