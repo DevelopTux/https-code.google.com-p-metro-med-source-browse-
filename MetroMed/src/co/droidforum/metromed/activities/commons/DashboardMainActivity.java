@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import co.droidforum.metromed.activities.alimentadores.AlimentadoresAActivity;
+import co.droidforum.metromed.activities.alimentadores.AlimentadoresActivity;
 import co.droidforum.metromed.activities.estacionesmapa.EstacionesCercanasActivity;
 
 public class DashboardMainActivity extends Activity {
@@ -72,7 +72,7 @@ public class DashboardMainActivity extends Activity {
 		
 		buttonAlimentadores.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {			
-				Intent intent = new Intent(DashboardMainActivity.this, AlimentadoresAActivity.class);
+				Intent intent = new Intent(DashboardMainActivity.this, AlimentadoresActivity.class);
 				startActivity(intent);
 			}
 		});

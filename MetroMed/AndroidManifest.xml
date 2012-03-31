@@ -40,7 +40,7 @@
                   android:screenOrientation="portrait"
                   android:theme="@android:style/Theme.NoTitleBar">
         </activity>        
-        <activity  android:name=".activities.alimentadores.AlimentadoresAActivity"
+        <activity  android:name=".activities.alimentadores.AlimentadoresActivity"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait"
                   android:theme="@android:style/Theme.NoTitleBar">

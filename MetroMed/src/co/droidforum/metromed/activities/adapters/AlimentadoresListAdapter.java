@@ -13,10 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class AlimentadoresListAdapter extends ArrayAdapter<EstacionMetroDTO> {
+	
 	private Context context;
 	private List<EstacionMetroDTO> datos;
+	
 	public AlimentadoresListAdapter(Context context, List<EstacionMetroDTO> objects){
-		super(context, R.layout.list_view_alimentadores);
+		super(context, R.layout.list_view_alimentadores, objects);
 		datos = objects;
 		this.context = context;
 	}
@@ -30,6 +32,6 @@ public class AlimentadoresListAdapter extends ArrayAdapter<EstacionMetroDTO> {
 	    
 	    TextView subtitulo = (TextView)item.findViewById(R.id.subTextoEstacion);
 	    subtitulo.setText("Linea: "+estacionMetroDTO.getLinea());
-	    return item;
+	    return (item);
    }
 }

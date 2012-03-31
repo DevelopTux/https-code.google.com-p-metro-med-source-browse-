@@ -4,6 +4,7 @@ import java.util.List;
 
 import co.droidforum.metromed.R;
 import co.droidforum.metromed.activities.adapters.AlimentadoresListAdapter;
+import co.droidforum.metromed.application.AplicationContext;
 import co.droidforum.metromed.application.BusinessContext;
 import co.droidforum.metromed.bo.EstacionesMetroBO;
 
@@ -12,7 +13,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import co.droidforum.metromed.dto.*;
 
-public class AlimentadoresAActivity extends Activity {
+public class AlimentadoresActivity extends Activity {
 	
 	private ListView alimentadoresListView;
 	private AlimentadoresListAdapter alimentadoresListAdapter;

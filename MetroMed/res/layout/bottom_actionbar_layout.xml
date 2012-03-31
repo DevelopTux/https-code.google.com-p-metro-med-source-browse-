@@ -1,6 +1,3 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/BottomActionBarCompat" >
- 	
-    
- 
+    style="@style/BottomActionBarCompat" > 
 </LinearLayout>
