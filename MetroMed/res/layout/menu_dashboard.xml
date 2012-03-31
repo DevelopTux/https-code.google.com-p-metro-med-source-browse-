@@ -9,14 +9,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/dashboard_metro_maps"
-        android:text="@string/dashboard_metro_maps" />
+        android:drawableTop="@drawable/dashboard_metro_maps"/>
 	<Button
         android:id="@+id/buttonEstacionesCercanas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/dashboard_metro_around"
-        android:text="@string/dashboard_metro_around" />
+        android:drawableTop="@drawable/dashboard_metro_around"/>
+	
+	<Button
+        android:id="@+id/buttonAlimentadores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/dashboard_metro_alimentadores"/>
 
 </co.droidforum.metromed.activities.commons.DashboardLayoutActivity>

@@ -7,9 +7,24 @@
     android:weightSum="1">
     <include layout="@layout/actionbar_layout"/>
 
-    <WebView
-        android:id="@+id/webViewMapa"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+	<WebView
+	        android:id="@+id/webViewMapa"
+	        android:layout_width="match_parent"
+	        android:layout_height="fill_parent">
+	        
+	</WebView>
 
-</LinearLayout>
+<!-- 	<LinearLayout -->
+<!-- 	    android:id="@+id/linearLayout1" -->
+<!-- 	    android:layout_width="match_parent" -->
+<!-- 	    android:layout_height="wrap_content" -->
+<!-- 	    android:orientation="vertical" > -->
+<!-- 	    <include layout="@layout/bottom_actionbar_layout"/> -->
+<!-- 	</LinearLayout> -->
+	
+</LinearLayout>  
+    
+    
+    
+
+

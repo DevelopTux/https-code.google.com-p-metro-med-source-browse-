@@ -1,9 +1,16 @@
 <resources>
     <style name="ActionBarCompat">
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">75dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@drawable/actionbar_background</item>
+    </style>
+    
+    <style name="BottomActionBarCompat">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/bottom_actionbar_background</item>
     </style>
  
     <style name="DashboardButton">
