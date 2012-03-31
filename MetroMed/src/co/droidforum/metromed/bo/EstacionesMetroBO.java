@@ -33,6 +33,14 @@ public class EstacionesMetroBO {
 		return estacionesDAO.getAllEstacionesMetro();
 	}
 	
+	/**
+	 * Metodo que obtiene las estaciones de una linea en especifico
+	 * @param linea
+	 * @return
+	 */
+	public List<EstacionMetroDTO> getEstacionesXLinea(String linea){
+		return estacionesDAO.getEstacionesXLinea(linea);
+	}
 	
 	public void insertOneRecord(){
 		ContentValues cv = new ContentValues();

@@ -35,20 +35,37 @@ public class EstacionesDAO extends GenericDAO {
 		List<EstacionMetroDTO> listaDemo = new ArrayList<EstacionMetroDTO>();
 		EstacionMetroDTO e=new EstacionMetroDTO();
 		e.setNombre("Aguacatala");
+		e.setLinea("A");
+		listaDemo.add(e);
+		e=new EstacionMetroDTO();
+		e.setNombre("Aguacatalax");
+		e.setLinea("A");
+		listaDemo.add(e);
+		e=new EstacionMetroDTO();
+		e.setNombre("Aguacatalaxi");
+		e.setLinea("A");
 		listaDemo.add(e);
 		return listaDemo;
 	}
 	
 	private class EstacionMetroTodasBinder implements Binder<EstacionMetroDTO> {
 		public EstacionMetroDTO bind(Cursor cursor){
-			EstacionMetroDTO estacionMetroDTO = new EstacionMetroDTO();
-			estacionMetroDTO.setId(cursor.getString(cursor.getColumnIndex("_id")));
-			estacionMetroDTO.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
-			estacionMetroDTO.setLatitud(cursor.getString(cursor.getColumnIndex("latitud")));
-			estacionMetroDTO.setLongitud(cursor.getString(cursor.getColumnIndex("longitud")));
-			estacionMetroDTO.setLinea(cursor.getString(cursor.getColumnIndex("linea")));
-			return estacionMetroDTO;
+			return getEstacionMetroDTO(cursor);
 		}
+	}
+	
+	/**
+	 * Retorna un dto de estación del metro
+	 * @return
+	 */
+	private EstacionMetroDTO getEstacionMetroDTO(Cursor cursor){
+		EstacionMetroDTO estacionMetroDTO = new EstacionMetroDTO();
+		estacionMetroDTO.setId(cursor.getString(cursor.getColumnIndex("_id")));
+		estacionMetroDTO.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
+		estacionMetroDTO.setLatitud(cursor.getString(cursor.getColumnIndex("latitud")));
+		estacionMetroDTO.setLongitud(cursor.getString(cursor.getColumnIndex("longitud")));
+		estacionMetroDTO.setLinea(cursor.getString(cursor.getColumnIndex("linea")));
+		return estacionMetroDTO;
 	}
 	
 	/**
