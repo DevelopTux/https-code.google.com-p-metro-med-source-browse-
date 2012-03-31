@@ -5,10 +5,11 @@ import java.util.List;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.widget.Toast;
 import co.droidforum.metromed.R;
+import co.droidforum.metromed.application.AplicationContext;
 import co.droidforum.metromed.application.BusinessContext;
 import co.droidforum.metromed.bo.EstacionesMetroBO;
 import co.droidforum.metromed.dto.EstacionMetroDTO;
@@ -56,7 +57,6 @@ public class OverlayMapa extends Overlay {
 
 			//Definimos el pincel de dibujo
 			Paint p = new Paint();
-			p.setColor(Color.BLUE);
 			
 			//Marca con una imagen apuntador como Google Maps
 			Bitmap bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.marcador_google_maps);
@@ -69,6 +69,9 @@ public class OverlayMapa extends Overlay {
 		}
 	}
 	
+	/*
+	 * Metodo que a partir de la ubicacion almacenada de cada estacion de metro la pinta en la capa del mapa
+	 */
 	private void setEstacionesMetro(GeoPoint geoPoint, Canvas canvas, MapView mapView){
 		
 		EstacionesMetroBO estacionesCercanasBO = BusinessContext.getBean(EstacionesMetroBO.class);
@@ -86,31 +89,27 @@ public class OverlayMapa extends Overlay {
 
 			//Definimos el pincel de dibujo
 			Paint p = new Paint();
-			p.setColor(Color.BLUE);
 			
 			//Marca con una imagen apuntador como Google Maps
 			Bitmap bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.marcador_google_maps);
 			
 			canvas.drawBitmap(bm, centro.x - bm.getWidth(), 
 					              centro.y - bm.getHeight(), p);
+			
 		}
 	}
 	
-//	@Override
-//	public boolean onTap(GeoPoint point, MapView mapView) 
-//	{
-//		Context contexto = mapView.getContext();
-//		String msg = "Lat: " + point.getLatitudeE6()/1E6 + " - " + 
-//		             "Lon: " + point.getLongitudeE6()/1E6;
-//		
-//		Toast toast = Toast.makeText(contexto, msg, Toast.LENGTH_SHORT);
-//		toast.show();
-//		
-//		return true;
-//	}
+	@Override
+	public boolean onTap(GeoPoint point, MapView mapView) 
+	{
+		
+		String msg = "Lat: " + point.getLatitudeE6()/1E6 + " - " + 
+		             "Lon: " + point.getLongitudeE6()/1E6;
+		
+		Toast toast = Toast.makeText(AplicationContext.getContextApp(), msg, Toast.LENGTH_SHORT);
+		toast.show();
+		
+		return true;
+	}
 	
-//	private void insertarDatosEnBD(){
-//		MapaEstacionesCercanasBO estacionesCercanasBO = BusinessContext.getBean(MapaEstacionesCercanasBO.class);
-//		estacionesCercanasBO.insertOneRecord();
-//	}
 }

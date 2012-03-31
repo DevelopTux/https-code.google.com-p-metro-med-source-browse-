@@ -6,11 +6,13 @@ package co.droidforum.metromed.activities.commons;
  * @author DroidForum.co / GalaxyMovil.com / @cgranadax
  */
 
-import co.droidforum.metromed.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import co.droidforum.metromed.R;
+import co.droidforum.metromed.application.BusinessContext;
+import co.droidforum.metromed.bo.EstacionesMetroBO;
 
 public class SplashAppActivity extends Activity {
 	/*
@@ -18,6 +20,8 @@ public class SplashAppActivity extends Activity {
 	 * la aplicación y se desee mostrar una presentación introductoria
 	 */
 	private final int SPLASH_DISPLAY_LENGTH = 2000;
+	
+	private EstacionesMetroBO estacionesMetroBO = BusinessContext.getBean(EstacionesMetroBO.class);
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,12 @@ public class SplashAppActivity extends Activity {
 	private Runnable getRunnableStartApp(){
     	Runnable runnable = new Runnable(){
         	public void run(){
+        		
+        		//inserta las estaciones si no existen
+        		if(estacionesMetroBO.getAllEstacionesMetro().size()<=0){
+        			EstacionesMetroBO estacionesMetroBO = BusinessContext.getBean(EstacionesMetroBO.class);
+        			estacionesMetroBO.insertRecordsEstacionesMetro();
+        		}
         		Intent intent = new Intent(SplashAppActivity.this, DashboardMainActivity.class);
         		startActivity(intent);
         		finish();

@@ -1,6 +1,7 @@
 package co.droidforum.metromed.application;
 
 
+import java.io.InputStream;
 import java.util.List;
 
 import android.app.ActivityManager;
@@ -94,5 +95,17 @@ public class AplicationContext extends Application {
         return false;
     }
 	
-    
+    /**
+	 * Obtiene un raw resource de la aplicacion que corresponde al
+	 * id que se pasa como parametro
+	 *  
+	 * @param idRawResource Id del resource
+	 * @return	Stream del archivo
+	 */
+	public static InputStream getRawResource(int idRawResource) {
+		Resources resources = contextApp.getResources();
+		InputStream rawResource = resources.openRawResource(idRawResource);
+		
+		return rawResource;
+	}
 }
