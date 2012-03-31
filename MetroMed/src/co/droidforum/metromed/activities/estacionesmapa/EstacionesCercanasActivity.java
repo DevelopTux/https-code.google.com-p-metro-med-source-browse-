@@ -1,18 +1,22 @@
 package co.droidforum.metromed.activities.estacionesmapa;
 
+import java.util.List;
+
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 import co.droidforum.metromed.R;
+import co.droidforum.metromed.utils.mapa.OverlayMapa;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
+import com.google.android.maps.Projection;
 
 /**
  * Actividad encargada de cargar un mapa de Google y mostrar en éste la ubicación
@@ -62,6 +66,9 @@ public class EstacionesCercanasActivity extends MapActivity {
 			mapController.setCenter(geoPoint);
 			//el minimo valor del zoom es 1 (vista menor detalle) y el maximo es 21 (vista mayor detalle)
 			mapController.setZoom(18);
+			
+			//Dibuja el punto en el cual estoy ubicado
+			setMyPoint(mapView,geoPoint);
 		}
 	}
 	
@@ -113,6 +120,20 @@ public class EstacionesCercanasActivity extends MapActivity {
     		
     	}
     }
+	
+	/*
+	 * Basado en el mapa actual y la posicion actual marcada como centro del mapa, en ese punto ubico un icono de posicion
+	 */
+	private void setMyPoint(MapView mapView, GeoPoint geoPoint){
+		
+		Projection projection = mapView.getProjection();
+		//Añadimos la capa de marcas
+		List<Overlay> capas = mapView.getOverlays();
+		OverlayMapa overlayMapa = new OverlayMapa(geoPoint,projection);
+		capas.add(overlayMapa);
+		//para redibujar el mapa y todas sus capas
+		mapView.postInvalidate();
+	}
 
 	/*
      * El valor de retorno debe ser true sólo en caso de que vayamos a 
