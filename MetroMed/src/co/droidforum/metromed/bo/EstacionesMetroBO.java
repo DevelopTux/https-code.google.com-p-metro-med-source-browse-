@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import android.content.ContentValues;
+
 import co.droidforum.metromed.application.BusinessObject;
 import co.droidforum.metromed.dao.EstacionesDAO;
 import co.droidforum.metromed.dto.EstacionMetroDTO;
@@ -18,7 +20,7 @@ import co.droidforum.metromed.dto.EstacionMetroDTO;
  *
  */
 @BusinessObject
-public class MapaEstacionesCercanasBO {
+public class EstacionesMetroBO {
 
 	//hace el llamado directo al dao, requiere importar las libs de guice y javax.inject
 	@Inject EstacionesDAO estacionesDAO;
@@ -29,5 +31,16 @@ public class MapaEstacionesCercanasBO {
 	 */
 	public List<EstacionMetroDTO> getAllEstacionesMetro() {
 		return estacionesDAO.getAllEstacionesMetro();
+	}
+	
+	
+	public void insertOneRecord(){
+		ContentValues cv = new ContentValues();
+		cv.put("nombre", "Niquia");
+		cv.put("latitud", "6");
+		cv.put("longitud", "-75");
+		cv.put("linea", "A");
+		
+		estacionesDAO.insertEstacionesMetro(cv);
 	}
 }

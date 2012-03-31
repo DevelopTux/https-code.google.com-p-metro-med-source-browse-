@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 import co.droidforum.metromed.R;
 import co.droidforum.metromed.utils.mapa.OverlayMapa;
@@ -65,7 +66,7 @@ public class EstacionesCercanasActivity extends MapActivity {
 		if(geoPoint != null){
 			mapController.setCenter(geoPoint);
 			//el minimo valor del zoom es 1 (vista menor detalle) y el maximo es 21 (vista mayor detalle)
-			mapController.setZoom(18);
+			mapController.setZoom(14);
 			
 			//Dibuja el punto en el cual estoy ubicado
 			setMyPoint(mapView,geoPoint);
@@ -81,9 +82,22 @@ public class EstacionesCercanasActivity extends MapActivity {
     	locManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	
     	//Obtenemos la última posición conocida
+    	Log.e("----------------", LocationManager.NETWORK_PROVIDER);
     	Location location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
     	//se muestra esa posicion
-    	getPosicionActual(location);
+    	if(location != null){
+    		getPosicionActual(location);
+    	}else{
+    		/*
+        	 * Registra el listener en el Location Manager para recibir actualizaciones de locacion de las redes
+        	 * Los parametros 2 y 3 de requestLocationUpdates estan en 0 para indicar que nos de la posicion en vivo
+        	 * con el minimo intervalo de tiempo entre notificaciones.
+        	 * Al usar localizacion por Redes, debe agregarse el permiso android.permission.ACCESS_COARSE_LOCATION
+        	 * en el AndroidManifest.
+        	 */
+        	locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 0, locListener);
+        	locManager.removeUpdates(locListener);
+    	}
     	
     	//Se crea un listener que hace las llamadas necesarias en callback 
     	//Nos registramos para recibir actualizaciones de la posición
@@ -95,16 +109,6 @@ public class EstacionesCercanasActivity extends MapActivity {
 	    	public void onProviderEnabled(String provider){}
 	    	public void onStatusChanged(String provider, int statusProvider, Bundle extras){}
     	};
-
-    	/*
-    	 * Registra el listener en el Location Manager para recibir actualizaciones de locacion de las redes
-    	 * Los parametros 2 y 3 de requestLocationUpdates estan en 0 para indicar que nos de la posicion en vivo
-    	 * con el minimo intervalo de tiempo entre notificaciones.
-    	 * Al usar localizacion por Redes, debe agregarse el permiso android.permission.ACCESS_COARSE_LOCATION
-    	 * en el AndroidManifest.
-    	 */
-    	locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 0, locListener);
-    	locManager.removeUpdates(locListener);
     }
 	
 	/*

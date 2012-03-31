@@ -2,6 +2,7 @@ package co.droidforum.metromed.dao;
 
 import java.util.List;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import co.droidforum.metromed.application.db.Binder;
 import co.droidforum.metromed.application.db.GenericDAO;
@@ -36,6 +37,16 @@ public class EstacionesDAO extends GenericDAO {
 			estacionMetroDTO.setLinea(cursor.getString(cursor.getColumnIndex("linea")));
 			return estacionMetroDTO;
 		}
+	}
+	
+	/**
+	 * 
+	 * Inserta en la tabla de estaciones
+	 * 
+	 * @param values Objeto ContentValues con la data a insertar
+	 */
+	public void insertEstacionesMetro(ContentValues values){		
+		insert(values, "estaciones_metro");
 	}
 
 }

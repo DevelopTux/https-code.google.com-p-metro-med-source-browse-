@@ -1,13 +1,17 @@
 package co.droidforum.metromed.utils.mapa;
 
+import java.util.List;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-
 import co.droidforum.metromed.R;
+import co.droidforum.metromed.application.BusinessContext;
+import co.droidforum.metromed.bo.EstacionesMetroBO;
+import co.droidforum.metromed.dto.EstacionMetroDTO;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
@@ -59,6 +63,36 @@ public class OverlayMapa extends Overlay {
 			
 			canvas.drawBitmap(bm, centro.x - bm.getWidth(), 
 					              centro.y - bm.getHeight(), p);
+			
+			//pinta las estaciones del metro que estan en la BD
+			setEstacionesMetro(geoPoint, canvas, mapView);
+		}
+	}
+	
+	private void setEstacionesMetro(GeoPoint geoPoint, Canvas canvas, MapView mapView){
+		
+		EstacionesMetroBO estacionesCercanasBO = BusinessContext.getBean(EstacionesMetroBO.class);
+		
+		List<EstacionMetroDTO> estacionesMetro = estacionesCercanasBO.getAllEstacionesMetro() ;
+		
+		for(EstacionMetroDTO estacionMetroDTO : estacionesMetro){
+			Double latitud = new Double(estacionMetroDTO.getLatitud());
+			Double longitud = new Double(estacionMetroDTO.getLongitud());
+			geoPoint = new GeoPoint(new Double(latitud*1E6).intValue() , new Double(longitud*1E6).intValue());
+			
+			Point centro = new Point();
+			//convierte las coordenadas de latitud y longitud de GeoPoint a coordenadas pixel de x-y
+			projection.toPixels(geoPoint, centro);
+
+			//Definimos el pincel de dibujo
+			Paint p = new Paint();
+			p.setColor(Color.BLUE);
+			
+			//Marca con una imagen apuntador como Google Maps
+			Bitmap bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.marcador_google_maps);
+			
+			canvas.drawBitmap(bm, centro.x - bm.getWidth(), 
+					              centro.y - bm.getHeight(), p);
 		}
 	}
 	
@@ -73,5 +107,10 @@ public class OverlayMapa extends Overlay {
 //		toast.show();
 //		
 //		return true;
+//	}
+	
+//	private void insertarDatosEnBD(){
+//		MapaEstacionesCercanasBO estacionesCercanasBO = BusinessContext.getBean(MapaEstacionesCercanasBO.class);
+//		estacionesCercanasBO.insertOneRecord();
 //	}
 }
