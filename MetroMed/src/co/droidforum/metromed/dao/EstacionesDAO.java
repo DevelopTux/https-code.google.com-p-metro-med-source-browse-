@@ -1,5 +1,6 @@
 package co.droidforum.metromed.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -25,6 +26,17 @@ public class EstacionesDAO extends GenericDAO {
 	public List<EstacionMetroDTO> getAllEstacionesMetro() {
 		String query = "select _id, nombre, latitud, longitud, linea from estaciones_metro";
 		return getResultsByQuery(query, new EstacionMetroTodasBinder());
+	}
+	
+	public List<EstacionMetroDTO> getEstacionesXLinea(String linea){
+		/*
+		 * Datos de prueba
+		 */
+		List<EstacionMetroDTO> listaDemo = new ArrayList<EstacionMetroDTO>();
+		EstacionMetroDTO e=new EstacionMetroDTO();
+		e.setNombre("Aguacatala");
+		listaDemo.add(e);
+		return listaDemo;
 	}
 	
 	private class EstacionMetroTodasBinder implements Binder<EstacionMetroDTO> {

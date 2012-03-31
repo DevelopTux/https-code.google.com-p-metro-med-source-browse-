@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import co.droidforum.metromed.activities.alimentadores.AlimentadoresAActivity;
 import co.droidforum.metromed.activities.estacionesmapa.EstacionesCercanasActivity;
 
 public class DashboardMainActivity extends Activity {
@@ -25,6 +26,7 @@ public class DashboardMainActivity extends Activity {
 	private ImageView galaxyLogoImg;
 	private Button buttonEstacionesCercanas;
 	private Button buttonMapaMetro;
+	private Button buttonAlimentadores;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class DashboardMainActivity extends Activity {
 		 */
 		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
 		buttonMapaMetro = (Button)findViewById(R.id.buttonMapaMetro);
+		buttonAlimentadores = (Button)findViewById(R.id.buttonAlimentadores);
 		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
 		    public void onClick(View v){
 		        Intent intent = new Intent();
@@ -63,6 +66,13 @@ public class DashboardMainActivity extends Activity {
 		buttonMapaMetro.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {			
 				Intent intent = new Intent(DashboardMainActivity.this, MapaMetroActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		buttonAlimentadores.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {			
+				Intent intent = new Intent(DashboardMainActivity.this, AlimentadoresAActivity.class);
 				startActivity(intent);
 			}
 		});
