@@ -19,4 +19,6 @@ public class MapaMetroActivity extends Activity {
          mWebView.loadDataWithBaseURL("file:///android_asset/", "<img src='mapa_lineas.jpg' width='300' />", "text/html", "utf-8", null);
          
      }
+     
+     
 }

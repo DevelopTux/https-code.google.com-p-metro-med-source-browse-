@@ -29,23 +29,8 @@ public class EstacionesDAO extends GenericDAO {
 	}
 	
 	public List<EstacionMetroDTO> getEstacionesXLinea(String linea){
-		/*
-		 * Datos de prueba
-		 */
-		List<EstacionMetroDTO> listaDemo = new ArrayList<EstacionMetroDTO>();
-		EstacionMetroDTO e=new EstacionMetroDTO();
-		e.setNombre("Aguacatala");
-		e.setLinea("A");
-		listaDemo.add(e);
-		e=new EstacionMetroDTO();
-		e.setNombre("Aguacatalax");
-		e.setLinea("A");
-		listaDemo.add(e);
-		e=new EstacionMetroDTO();
-		e.setNombre("Aguacatalaxi");
-		e.setLinea("A");
-		listaDemo.add(e);
-		return listaDemo;
+		String query = "select _id, nombre, latitud, longitud, linea from estaciones_metro where linea='"+linea+"'";
+		return getResultsByQuery(query, new EstacionMetroTodasBinder());
 	}
 	
 	private class EstacionMetroTodasBinder implements Binder<EstacionMetroDTO> {

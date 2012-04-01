@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
+    android:orientation="vertical"
+     
     android:gravity="bottom">
 	
 	<include layout="@layout/actionbar_layout"/>
@@ -13,6 +14,15 @@
         android:layout_weight="1"
         android:layout_height="0dip"
         android:gravity="bottom"/>
-    <include layout="@layout/bottom_actionbar_layout"/> 
+    <include layout="@layout/bottom_actionbar_alimentadores_layout"/> 
+    <WebView
+	    android:id="@+id/webViewMapaAlimentadores"
+	    android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dip"
+        android:gravity="bottom"
+        android:visibility="gone">
+	        
+	</WebView>
     
 </LinearLayout>

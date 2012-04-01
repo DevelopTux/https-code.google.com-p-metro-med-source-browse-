@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/BottomActionBarCompat" >
+
+    <TableLayout
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:stretchColumns="0,1,2" android:layout_gravity="center_vertical">
+	   <TableRow android:layout_width="fill_parent"> 
+	        <Button
+	        android:id="@+id/buttonHomeBottomBar"
+	        android:background="@drawable/home_abar_states"
+	        android:src="@drawable/casa_off" android:layout_gravity="center_horizontal" />
+	    	<Button
+	        android:id="@+id/buttonHorariosBottomBar"
+	        android:background="@drawable/button_horarios"
+	        android:src="@drawable/casa_off" android:layout_gravity="center_horizontal" />
+	    	<Button
+	        android:id="@+id/buttonTarifasBottomBar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/button_tarifas"
+	        android:src="@drawable/casa_off" android:layout_gravity="center_horizontal" />
+	   </TableRow>
+   
+</TableLayout>
+    
+     
+</LinearLayout>

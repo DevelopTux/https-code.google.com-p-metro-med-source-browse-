@@ -26,11 +26,9 @@ public class AlimentadoresActivity extends Activity {
 		/*
 		 * Se inicializan los componentes 
 		 */
-		
 		alimentadoresListView = (ListView)findViewById(R.id.listViewAlimentadores);
 		alimentadoresListAdapter = new AlimentadoresListAdapter(this, getListaEstacionesMetro());
 		alimentadoresListView.setAdapter(alimentadoresListAdapter);
-		//registerForContextMenu(alimentadoresListView);
 		
 	}
 	
