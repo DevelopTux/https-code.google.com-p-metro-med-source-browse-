@@ -15,6 +15,7 @@ public class EstacionMetroDTO {
 	private String latitud;
 	private String longitud;
 	private String linea;
+	private String imagen;
 	
 	/**
 	 * Constructor por defecto
@@ -61,6 +62,14 @@ public class EstacionMetroDTO {
 
 	public void setLinea(String linea) {
 		this.linea = linea;
+	}
+	
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 }

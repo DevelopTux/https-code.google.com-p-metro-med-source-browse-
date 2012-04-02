@@ -85,6 +85,7 @@ public class EstacionesMetroBO {
 					cv.put("latitud", (String)stringTokenizer.nextElement());
 					cv.put("longitud", (String)stringTokenizer.nextElement());
 					cv.put("linea", (String)stringTokenizer.nextElement());
+					cv.put("imagen", (String)stringTokenizer.nextElement());
 					estacionesDAO.insertEstacionesMetro(cv);
 		    	}
 		    }

@@ -23,12 +23,12 @@ public class EstacionesDAO extends GenericDAO {
 	 * @return lista de estaciones de metro
 	 */
 	public List<EstacionMetroDTO> getAllEstacionesMetro() {
-		String query = "select _id, nombre, latitud, longitud, linea from estaciones_metro";
+		String query = "select _id, nombre, latitud, longitud, linea, imagen from estaciones_metro";
 		return getResultsByQuery(query, new EstacionMetroTodasBinder());
 	}
 	
 	public List<EstacionMetroDTO> getEstacionesXLinea(String linea){
-		String query = "select _id, nombre, latitud, longitud, linea from estaciones_metro where linea='"+linea+"'";
+		String query = "select _id, nombre, latitud, longitud, linea, imagen from estaciones_metro where linea='"+linea+"'";
 		return getResultsByQuery(query, new EstacionMetroTodasBinder());
 	}
 	
@@ -49,6 +49,7 @@ public class EstacionesDAO extends GenericDAO {
 		estacionMetroDTO.setLatitud(cursor.getString(cursor.getColumnIndex("latitud")));
 		estacionMetroDTO.setLongitud(cursor.getString(cursor.getColumnIndex("longitud")));
 		estacionMetroDTO.setLinea(cursor.getString(cursor.getColumnIndex("linea")));
+		estacionMetroDTO.setImagen(cursor.getString(cursor.getColumnIndex("imagen")));
 		return estacionMetroDTO;
 	}
 	

@@ -15,5 +15,6 @@
     <string name="linea_1_validacion">1</string>
     <string name="nombre_tabla_estaciones_metro">estaciones_metro</string>
     <string name="linea_metro">Linea</string>
+    <string name="no_existe_mapa_alimentador">No existe mapa alimentador para:</string>
 
 </resources>

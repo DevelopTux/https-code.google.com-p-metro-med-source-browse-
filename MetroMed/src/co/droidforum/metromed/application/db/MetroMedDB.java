@@ -17,7 +17,7 @@ public class MetroMedDB extends SQLiteOpenHelper{
 	private static final String sqlCreateTableEstacionesMetro = 
 									"CREATE TABLE estaciones_metro (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 																	"nombre TEXT, latitud TEXT, longitud TEXT, " +
-																	"linea TEXT)";
+																	"linea TEXT, imagen TEXT)";
 	
 	public MetroMedDB(Context context){
 		super(context, DATABASE, null, 1);

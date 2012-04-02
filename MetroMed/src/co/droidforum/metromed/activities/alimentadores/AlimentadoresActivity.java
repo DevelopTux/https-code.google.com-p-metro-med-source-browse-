@@ -8,18 +8,23 @@ import co.droidforum.metromed.activities.commons.DashboardMainActivity;
 import co.droidforum.metromed.activities.mapametro.MapaMetroActivity;
 import co.droidforum.metromed.application.AplicationContext;
 import co.droidforum.metromed.application.BusinessContext;
+import co.droidforum.metromed.application.GenericActivity;
 import co.droidforum.metromed.bo.EstacionesMetroBO;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 import co.droidforum.metromed.dto.*;
 
-public class AlimentadoresActivity extends Activity {
+public class AlimentadoresActivity extends GenericActivity {
 	
 	private ListView alimentadoresListView;
 	private Button buttonLineaA;
@@ -39,28 +44,39 @@ public class AlimentadoresActivity extends Activity {
 		 * Se inicializan los componentes 
 		 */
 		alimentadoresListView = (ListView)findViewById(R.id.listViewAlimentadores);
-		String linea=null;
-		if(linea==null){
-			linea = getResources().getString(R.string.linea_A_validacion);
-		}
-		alimentadoresListAdapter = new AlimentadoresListAdapter(this, getListaEstacionesMetro(linea));
-		alimentadoresListView.setAdapter(alimentadoresListAdapter);
+		/*
+		 * por defecto se carga la linea A 
+		 */
+		setEstacionesListAdapter(getResources().getString(R.string.linea_A_validacion));
+		
+		buttonLineaA.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {			
+				setEstacionesListAdapter(getResources().getString(R.string.linea_A_validacion));
+			}
+		});
 		
 		buttonLineaB.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {			
 				setEstacionesListAdapter(getResources().getString(R.string.linea_B_validacion));
 			}
 		});
+		buttonLineaJ.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {			
+				setEstacionesListAdapter(getResources().getString(R.string.linea_J_validacion));
+			}
+		});
 		
 	}
 	
 	public void setEstacionesListAdapter(String linea){
-		//alimentadoresListAdapter.clear();
-		alimentadoresListAdapter.setDatos(getListaEstacionesMetro(linea));
+		alimentadoresListAdapter = new AlimentadoresListAdapter(this, getListaEstacionesMetro(linea));
+		alimentadoresListView.setAdapter(alimentadoresListAdapter);
 		alimentadoresListAdapter.notifyDataSetChanged();
+		
 	}
 	
 	private List<EstacionMetroDTO> getListaEstacionesMetro(String linea){
 		return estacionMetroBO.getEstacionesXLinea(linea);
-	}
+	}	
+	
 }
