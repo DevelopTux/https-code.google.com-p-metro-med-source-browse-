@@ -128,8 +128,8 @@ public class OverlayMapa extends Overlay {
 //		RectF rectF = new RectF();
 //		rectF.set(-iconoGral.getWidth()/2,-iconoGral.getHeight(),iconoGral.getWidth()/2,0);
 		
-		Toast toast = Toast.makeText(AplicationContext.getContextApp(), msg, Toast.LENGTH_SHORT);
-		toast.show();
+//		Toast toast = Toast.makeText(AplicationContext.getContextApp(), msg, Toast.LENGTH_SHORT);
+//		toast.show();
 		
 		return true;
 	}

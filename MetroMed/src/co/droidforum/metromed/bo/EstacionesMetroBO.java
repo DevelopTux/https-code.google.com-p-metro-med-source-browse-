@@ -74,21 +74,22 @@ public class EstacionesMetroBO {
 		    
 		    if(cantidadRecordsBD != cantidadRecordsFile){
 		    	estacionesDAO.deleteEstacionesMetro(AplicationContext.getValueStringResource(R.string.nombre_tabla_estaciones_metro));
+		    	for(int i=1; i<=cantidadRecordsFile; i++){
+			    	record = properties.getProperty(String.valueOf(i));
+			    	stringTokenizer = new StringTokenizer(record,"|");
+			    	while (stringTokenizer.hasMoreElements()){
+			    		cv = new ContentValues();
+				    	cv.put("nombre", (String)stringTokenizer.nextElement());
+						cv.put("latitud", (String)stringTokenizer.nextElement());
+						cv.put("longitud", (String)stringTokenizer.nextElement());
+						cv.put("linea", (String)stringTokenizer.nextElement());
+						cv.put("imagen", (String)stringTokenizer.nextElement());
+						estacionesDAO.insertEstacionesMetro(cv);
+			    	}
+			    }
 		    }
 		    
-		    for(int i=1; i<=cantidadRecordsFile; i++){
-		    	record = properties.getProperty(String.valueOf(i));
-		    	stringTokenizer = new StringTokenizer(record,"|");
-		    	while (stringTokenizer.hasMoreElements()){
-		    		cv = new ContentValues();
-			    	cv.put("nombre", (String)stringTokenizer.nextElement());
-					cv.put("latitud", (String)stringTokenizer.nextElement());
-					cv.put("longitud", (String)stringTokenizer.nextElement());
-					cv.put("linea", (String)stringTokenizer.nextElement());
-					cv.put("imagen", (String)stringTokenizer.nextElement());
-					estacionesDAO.insertEstacionesMetro(cv);
-		    	}
-		    }
+		    
 		    rawResource.close();
 		} catch (NotFoundException e) {
 		    System.err.println("Did not find raw resource: " + e);
