@@ -28,7 +28,7 @@ public class EstacionesDAO extends GenericDAO {
 	}
 	
 	public List<EstacionMetroDTO> getEstacionesXLinea(String linea){
-		String query = "select _id, nombre, latitud, longitud, linea, imagen from estaciones_metro where linea='"+linea+"'";
+		String query = "select _id, nombre, latitud, longitud, linea, imagen from estaciones_metro where linea='"+linea+"' and imagen <> '-'";
 		return getResultsByQuery(query, new EstacionMetroTodasBinder());
 	}
 	

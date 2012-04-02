@@ -4,12 +4,12 @@
     <TableLayout
 	  android:layout_width="fill_parent"
 	  android:layout_height="wrap_content"
-	  android:stretchColumns="0,1,2,3" android:layout_gravity="center_vertical">
+	  android:stretchColumns="0,1,2" android:layout_gravity="center_vertical">
 	   <TableRow android:layout_width="fill_parent"> 
-	        <Button
-	        android:id="@+id/buttonHomeBottomBarAlimentadores"
-	        android:background="@drawable/home_abar_states"
-	        android:src="@drawable/casa_off" android:layout_gravity="center_horizontal" />
+<!-- 	        <Button -->
+<!-- 	        android:id="@+id/buttonHomeBottomBarAlimentadores" -->
+<!-- 	        android:background="@drawable/home_abar_states" -->
+<!-- 	        android:src="@drawable/casa_off" android:layout_gravity="center_horizontal" /> -->
 	    	<Button
 	        android:id="@+id/buttonLineaA"
 	        android:background="@drawable/button_linea_a"
