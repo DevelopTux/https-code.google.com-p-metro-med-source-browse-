@@ -1,6 +1,5 @@
 package co.droidforum.metromed.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -61,6 +60,17 @@ public class EstacionesDAO extends GenericDAO {
 	 */
 	public void insertEstacionesMetro(ContentValues values){		
 		insert(values, "estaciones_metro");
+	}
+	
+	/**
+	 * 
+	 * Elimina los registros de la tabla de estaciones de metro
+	 * 
+	 * @param table Nombre de la tabla en la cual se eliminarán los registros
+	 * 
+	 */
+	public void deleteEstacionesMetro(String table){
+		delete(table, null, null);
 	}
 
 }

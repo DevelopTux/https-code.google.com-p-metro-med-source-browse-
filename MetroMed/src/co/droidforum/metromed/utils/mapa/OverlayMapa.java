@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.view.MotionEvent;
 import android.widget.Toast;
 import co.droidforum.metromed.R;
 import co.droidforum.metromed.application.AplicationContext;
@@ -37,6 +38,7 @@ public class OverlayMapa extends Overlay {
 	 */
 	private GeoPoint geoPoint;
 	private Projection projection;
+	public Bitmap iconoGral;
 	
 	public OverlayMapa() {
 		
@@ -59,7 +61,7 @@ public class OverlayMapa extends Overlay {
 			Paint p = new Paint();
 			
 			//Marca con una imagen apuntador como Google Maps
-			Bitmap bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.marcador_google_maps);
+			Bitmap bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_aqui);
 			
 			canvas.drawBitmap(bm, centro.x - bm.getWidth(), 
 					              centro.y - bm.getHeight(), p);
@@ -90,8 +92,23 @@ public class OverlayMapa extends Overlay {
 			//Definimos el pincel de dibujo
 			Paint p = new Paint();
 			
-			//Marca con una imagen apuntador como Google Maps
-			Bitmap bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.marcador_google_maps);
+			//Marca con una imagen apuntador como Google Maps dependiendo de la linea
+			Bitmap bm = null;
+			if(estacionMetroDTO.getLinea().equalsIgnoreCase(AplicationContext.getValueStringResource(R.string.linea_A_validacion))){
+				bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_a40);
+			}else if(estacionMetroDTO.getLinea().equalsIgnoreCase(AplicationContext.getValueStringResource(R.string.linea_B_validacion))){
+				bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_b40);
+			}else if(estacionMetroDTO.getLinea().equalsIgnoreCase(AplicationContext.getValueStringResource(R.string.linea_J_validacion))){
+				bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_j40);
+			}else if(estacionMetroDTO.getLinea().equalsIgnoreCase(AplicationContext.getValueStringResource(R.string.linea_K_validacion))){
+				bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_k40);
+			}else if(estacionMetroDTO.getLinea().equalsIgnoreCase(AplicationContext.getValueStringResource(R.string.linea_L_validacion))){
+				bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_l40);
+			}else if(estacionMetroDTO.getLinea().equalsIgnoreCase(AplicationContext.getValueStringResource(R.string.linea_1_validacion))){
+				bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_140);
+			}else if(estacionMetroDTO.getLinea().equalsIgnoreCase(AplicationContext.getValueStringResource(R.string.linea_B_validacion))){
+				bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_b50);
+			}
 			
 			canvas.drawBitmap(bm, centro.x - bm.getWidth(), 
 					              centro.y - bm.getHeight(), p);
@@ -106,10 +123,20 @@ public class OverlayMapa extends Overlay {
 		String msg = "Lat: " + point.getLatitudeE6()/1E6 + " - " + 
 		             "Lon: " + point.getLongitudeE6()/1E6;
 		
+//		iconoGral = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_a40);
+		
+//		RectF rectF = new RectF();
+//		rectF.set(-iconoGral.getWidth()/2,-iconoGral.getHeight(),iconoGral.getWidth()/2,0);
+		
 		Toast toast = Toast.makeText(AplicationContext.getContextApp(), msg, Toast.LENGTH_SHORT);
 		toast.show();
 		
 		return true;
 	}
-	
+
+	@Override
+	public boolean onTouchEvent(MotionEvent e, MapView mapView) {
+		
+		return super.onTouchEvent(e, mapView);
+	}
 }

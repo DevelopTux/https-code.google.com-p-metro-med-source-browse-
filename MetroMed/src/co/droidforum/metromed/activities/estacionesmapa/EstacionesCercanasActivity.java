@@ -3,6 +3,7 @@ package co.droidforum.metromed.activities.estacionesmapa;
 import java.util.List;
 
 import android.content.Context;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -39,6 +40,7 @@ public class EstacionesCercanasActivity extends MapActivity {
 	private GeoPoint geoPoint = null;
 	private LocationManager locManager = null;
 	private LocationListener locListener = null;
+	String bestProvider = "";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,7 @@ public class EstacionesCercanasActivity extends MapActivity {
 		if(geoPoint != null){
 			mapController.setCenter(geoPoint);
 			//el minimo valor del zoom es 1 (vista menor detalle) y el maximo es 21 (vista mayor detalle)
-			mapController.setZoom(14);
+			mapController.setZoom(18);
 			
 			//Dibuja el punto en el cual estoy ubicado
 			setMyPoint(mapView,geoPoint);
@@ -80,35 +82,46 @@ public class EstacionesCercanasActivity extends MapActivity {
 		
     	//Obtenemos una referencia al LocationManager
     	locManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-    	
-    	//Obtenemos la última posición conocida
-    	Log.e("----------------", LocationManager.NETWORK_PROVIDER);
-    	Location location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-    	//se muestra esa posicion
-    	if(location != null){
-    		getPosicionActual(location);
-    	}else{
-    		/*
-        	 * Registra el listener en el Location Manager para recibir actualizaciones de locacion de las redes
-        	 * Los parametros 2 y 3 de requestLocationUpdates estan en 0 para indicar que nos de la posicion en vivo
-        	 * con el minimo intervalo de tiempo entre notificaciones.
-        	 * Al usar localizacion por Redes, debe agregarse el permiso android.permission.ACCESS_COARSE_LOCATION
-        	 * en el AndroidManifest.
-        	 */
-        	locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 0, locListener);
-        	locManager.removeUpdates(locListener);
-    	}
+
+    	List<String> providers = locManager.getAllProviders();
+		for (String provider : providers) {
+			Log.e("-------------- Providers: ", provider);
+		}
+		
+		Criteria criteria = new Criteria();
+		bestProvider = locManager.getBestProvider(criteria, false);
+		
+		Location location = locManager.getLastKnownLocation(bestProvider);
+		Log.e("-------------- location: ", location!=null?location.toString():"Sin locacion");
+		
+		if(location != null){
+			getPosicionActual(location);
+		}
+		
+		/*
+    	 * Registra el listener en el Location Manager para recibir actualizaciones de locacion de las redes
+    	 * Los parametros 2 y 3 de requestLocationUpdates estan en 0 para indicar que nos de la posicion en vivo
+    	 * con el minimo intervalo de tiempo entre notificaciones.
+    	 * Al usar localizacion por Redes, debe agregarse el permiso android.permission.ACCESS_COARSE_LOCATION
+    	 * en el AndroidManifest.
+    	 */
+//    	locManager.requestLocationUpdates(bestProvider, 20000, 1, locListener);
     	
     	//Se crea un listener que hace las llamadas necesarias en callback 
     	//Nos registramos para recibir actualizaciones de la posición
     	locListener = new LocationListener() {
 	    	public void onLocationChanged(Location location) {
+	    		locManager.requestLocationUpdates(bestProvider, 20000, 1, this);
 	    		getPosicionActual(location);
+	    		locManager.removeUpdates(this);
 	    	}
 	    	public void onProviderDisabled(String provider){}
 	    	public void onProviderEnabled(String provider){}
 	    	public void onStatusChanged(String provider, int statusProvider, Bundle extras){}
     	};
+    	
+    	locManager.requestLocationUpdates(bestProvider, 20000, 1, locListener);
+    	locManager.removeUpdates(locListener);
     }
 	
 	/*
@@ -149,5 +162,11 @@ public class EstacionesCercanasActivity extends MapActivity {
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
+	}
+	
+	@Override
+	protected void onPause() {
+		locManager.removeUpdates(locListener);
+		super.onPause();
 	}
 }

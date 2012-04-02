@@ -56,13 +56,27 @@ public class EstacionesMetroBO {
 		String record = "";
 		ContentValues cv = null;
 		StringTokenizer stringTokenizer = null;
+		int cantidadRecordsBD = 0;
+		int cantidadRecordsFile = 0;
+		List<EstacionMetroDTO> estacionesMetro = null;
 			
 		try {
+			//obtiene la cantidad de registros actuales
+			estacionesMetro = estacionesDAO.getAllEstacionesMetro();
+			if(estacionesMetro != null && !estacionesMetro.isEmpty()){
+				cantidadRecordsBD = estacionesMetro.size();
+			}
+			
 			InputStream rawResource = AplicationContext.getRawResource(R.raw.estaciones_metro);
 		    Properties properties = new Properties();
 		    properties.load(rawResource);
+		    cantidadRecordsFile = properties.size();
 		    
-		    for(int i=1; i<=properties.size(); i++){
+		    if(cantidadRecordsBD != cantidadRecordsFile){
+		    	estacionesDAO.deleteEstacionesMetro(AplicationContext.getValueStringResource(R.string.nombre_tabla_estaciones_metro));
+		    }
+		    
+		    for(int i=1; i<=cantidadRecordsFile; i++){
 		    	record = properties.getProperty(String.valueOf(i));
 		    	stringTokenizer = new StringTokenizer(record,"|");
 		    	while (stringTokenizer.hasMoreElements()){

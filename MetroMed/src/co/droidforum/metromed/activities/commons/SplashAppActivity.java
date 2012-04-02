@@ -21,11 +21,11 @@ public class SplashAppActivity extends Activity {
 	 */
 	private final int SPLASH_DISPLAY_LENGTH = 2000;
 	
+	@SuppressWarnings("unused")
 	private EstacionesMetroBO estacionesMetroBO = BusinessContext.getBean(EstacionesMetroBO.class);
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash_app);
 		Handler handler = new Handler();
@@ -42,11 +42,10 @@ public class SplashAppActivity extends Activity {
     	Runnable runnable = new Runnable(){
         	public void run(){
         		
-        		//inserta las estaciones si no existen
-        		if(estacionesMetroBO.getAllEstacionesMetro().size()<=0){
-        			EstacionesMetroBO estacionesMetroBO = BusinessContext.getBean(EstacionesMetroBO.class);
-        			estacionesMetroBO.insertRecordsEstacionesMetro();
-        		}
+        		//al interior valida si deben insertarse registros e inserta las estaciones si no existen
+        		EstacionesMetroBO estacionesMetroBO = BusinessContext.getBean(EstacionesMetroBO.class);
+        		estacionesMetroBO.insertRecordsEstacionesMetro();
+        		
         		Intent intent = new Intent(SplashAppActivity.this, DashboardMainActivity.class);
         		startActivity(intent);
         		finish();

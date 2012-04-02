@@ -7,5 +7,12 @@
     <string name="dashboard_metro_around">Estaciones cercanas</string>
     <string name="url_galaxymovil">http://www.galaxymovil.com</string>
     <string name="msg_toast_carga_mapa">Obteniendo la ubicación actual ... </string>
+    <string name="linea_A_validacion">A</string>
+    <string name="linea_B_validacion">B</string>
+    <string name="linea_J_validacion">J</string>
+    <string name="linea_K_validacion">K</string>
+    <string name="linea_L_validacion">L</string>
+    <string name="linea_1_validacion">1</string>
+    <string name="nombre_tabla_estaciones_metro">estaciones_metro</string>
 
 </resources>
