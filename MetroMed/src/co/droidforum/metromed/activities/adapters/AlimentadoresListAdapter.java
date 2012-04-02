@@ -3,6 +3,7 @@ package co.droidforum.metromed.activities.adapters;
 import java.util.List;
 
 import co.droidforum.metromed.R;
+import co.droidforum.metromed.application.AplicationContext;
 import co.droidforum.metromed.dto.EstacionMetroDTO;
 import android.app.Activity;
 import android.content.Context;
@@ -23,15 +24,26 @@ public class AlimentadoresListAdapter extends ArrayAdapter<EstacionMetroDTO> {
 		this.context = context;
 	}
 	
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent) {		
 	    LayoutInflater inflater = ((Activity) context).getLayoutInflater();
 	    View item = inflater.inflate(R.layout.list_view_alimentadores, null);
-	    EstacionMetroDTO estacionMetroDTO = datos.get(position);
-	    TextView titulo = (TextView)item.findViewById(R.id.nombreEstacionList);
-	    titulo.setText(estacionMetroDTO.getNombre());
+	    if(position<datos.size()){
+	    	EstacionMetroDTO estacionMetroDTO = datos.get(position);
+	    	TextView titulo = (TextView)item.findViewById(R.id.nombreEstacionList);
+		    titulo.setText(estacionMetroDTO.getNombre());		    
+		    TextView subtitulo = (TextView)item.findViewById(R.id.subTextoEstacion);
+		    subtitulo.setText(AplicationContext.getValueStringResource(R.string.linea_metro)+": "+estacionMetroDTO.getLinea());
+	    }
 	    
-	    TextView subtitulo = (TextView)item.findViewById(R.id.subTextoEstacion);
-	    subtitulo.setText("Linea: "+estacionMetroDTO.getLinea());
 	    return (item);
    }
+	
+	public List<EstacionMetroDTO> getDatos() {
+		return datos;
+	}
+
+    
+	public void setDatos(List<EstacionMetroDTO> datos) {
+		this.datos = datos;
+	}	
 }

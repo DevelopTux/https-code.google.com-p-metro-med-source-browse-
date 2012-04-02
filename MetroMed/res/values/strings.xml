@@ -14,5 +14,6 @@
     <string name="linea_L_validacion">L</string>
     <string name="linea_1_validacion">1</string>
     <string name="nombre_tabla_estaciones_metro">estaciones_metro</string>
+    <string name="linea_metro">Linea</string>
 
 </resources>
