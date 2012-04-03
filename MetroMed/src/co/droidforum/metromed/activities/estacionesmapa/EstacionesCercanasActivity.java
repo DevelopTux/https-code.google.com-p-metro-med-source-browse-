@@ -68,7 +68,7 @@ public class EstacionesCercanasActivity extends MapActivity {
 		if(geoPoint != null){
 			mapController.setCenter(geoPoint);
 			//el minimo valor del zoom es 1 (vista menor detalle) y el maximo es 21 (vista mayor detalle)
-			mapController.setZoom(18);
+			mapController.setZoom(14);
 			
 			//Dibuja el punto en el cual estoy ubicado
 			setMyPoint(mapView,geoPoint);
