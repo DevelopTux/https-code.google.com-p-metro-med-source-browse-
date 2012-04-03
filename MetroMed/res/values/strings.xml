@@ -16,5 +16,29 @@
     <string name="nombre_tabla_estaciones_metro">estaciones_metro</string>
     <string name="linea_metro">Linea</string>
     <string name="no_existe_mapa_alimentador">No existe mapa alimentador para:</string>
-
+	<string name="alertDialogHorariosAceptar">Aceptar</string>
+	<string name="alertDialogHorariosTitle">Horarios Metro Medellín</string>
+	<string name="alertDialogHorariosText">Horarios de Servicio\n\nEl Metro presta su servicio comercial de lunes a sábado, entre las 4:30 de la mañana y las 11 de la noche; los domingos y festivos atiende de 5:00 de la mañana a 10:00 de la noche.\n
+	    	\nFrecuencia de los vehículos:\n\nLos trenes tienen diferentes horarios de recorrido dependiendo de la hora y el día de la semana.  Los momentos de mayor ocupación de los vehículos se denomina “hora pico” (5:00 a.m. a 8:00 a.m. y de 3:30 p.m. a 7:30 p.m.).  Las demás horas del día en las que la afluencia es menor se denominan “hora valle” (8:00 a.m. a 3:30 p.m. y después de las 7:30 p.m.). Las unidades del Metro llegan a las estaciones durante las horas pico cada 4 minutos y medio con trenes de 6 coches.  En las horas valle los trenes llegan a las estaciones cada 6 ó 7 minutos, dependiendo de la hora y el día.\n
+	    	\nMetrocable:\n\nEl Metrocable presta su servicio comercial de lunes a sábado, entre las 4:30 de la mañana y las 11 de la noche; los domingos y festivos los Metrocable inician operación desde las 9:00 de la mañana hasta las 10:00 de la noche.\n
+	    	\nLínea L:\n\nEl Cable opera entre las 9:00 a.m. y las 6:00 p.m. todos los días, excepto el primer día hábil de cada semana. Es decir, si el lunes es festivo, el cable no trabaja el martes con el fin de realizar mantenimientos.\n
+	    	\nFrecuencia de los vehículos:\n\nLas cabinas del Metrocable tienen una frecuencia de pocos segundos entre vehículos, debido a que tienen menos capacidad (10 usuarios por cabina) su frecuencia es mayor.\n
+	</string>
+	<string name="alertDialogTarifaAceptar">Aceptar</string>
+	<string name="alertDialogTarifaTitle">Tarifas Metro Medellín</string>
+	<string name="alertDialogTarifaText">Las siguientes tarifas fueron fijadas por la Junta Metropolitana a través del Acuerdo Metropolitano No. 18 del 5 de diciembre de 2011. Comenzarán a regir a partir del lunes 2 de enero de 2012:\n
+	    \nViaje con Tarjeta Cívica para usuario Frecuente: $1.550\n\nViaje con Tarjeta Cívica Al Portador:$1.600\n
+		\nViaje Estudiantil METRO: $1.250\n\nViaje Estudiantil Municipio: $800\n\nViaje Adulto Mayor: $1.470\n
+		\nViaje Persona con Movilidad Reducida: $1.190\n\nViaje Univiaje o Eventual (para turistas o usuarios eventuales. Aplica para el METRO, Metrocable y la línea 1 de buses): $1.800\n
+		\nEstas son las tarifas de los Tiquetes Integrados:\n\nMetrosan Micro y Buseta: $1.900\n\nMEI - Calatrava: $2.000\n
+		\nSanta Rita Zamora – San Antonio Prado – Floresta y Calasanz – Móvil Plus – Robledo – Villa Hermosa – Más Medellín Castilla – San Cristóbal – Poblado – La América – Campo Valdés – Blanquizal – Centro Oriental – Simón Bolívar - MEI Guayabal - Micro-Nororiental: $2.100\n
+		\nBus y Micro Bello – Bus y Micro Copacabana – MEI Itagüí – MEI Estrella –Circular Itagüí: $2.050\n
+		\nMicro Caldas: $2.150\n\nMicro Sabaneta – Micro Envigado: $2.200\n\nBus Girardota: $2.350\n\nMicro Girardota: $2.700\n
+		\nSan Félix: $2.950\n\nBus Barbosa:	$3.050\n\nEnvigado Las Palmas: $3.100\n\nTaxi Girardota: $3.150\n\nMicro Barbosa: $3.850\n
+		\nCable Arví:\n
+		\nCon tarjeta Cívica, Personal y con Sisbén 1, 2 ó 3: $100 (Ingreso por tranferencia desde el METRO) y $350 por trayecto (Ingreso directo por estaciones Cable Arví)\n
+		\nSin Cívica Personal y con Sisbén: $350 cada trayecto (Ingreso por tranferencia desde el METRO) y $350 cada trayecto (Ingreso directo por estaciones Cable Arví)\n
+		\nSin Sisbén: $3.500 cada trayecto\n
+		\nTodos los niños y niñas que midan hasta un metro: No pagan ingreso\n
+	</string>
 </resources>
