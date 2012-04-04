@@ -3,11 +3,14 @@ package co.droidforum.metromed.activities.estacionesmapa;
 import java.util.List;
 
 import android.content.Context;
+import android.location.Criteria;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 import co.droidforum.metromed.R;
-import co.droidforum.metromed.bo.EstacionesMetroBO;
 import co.droidforum.metromed.utils.mapa.OverlayMapa;
 
 import com.google.android.maps.GeoPoint;
@@ -79,8 +82,60 @@ public class EstacionesCercanasActivity extends MapActivity {
 		
     	//Obtenemos una referencia al LocationManager
     	locManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-    	geoPoint = new EstacionesMetroBO().obtenerLocalizacion(locManager);
 
+    	List<String> providers = locManager.getAllProviders();
+		for (String provider : providers) {
+			Log.e("-------------- Providers: ", provider);
+		}
+		
+		Criteria criteria = new Criteria();
+		bestProvider = locManager.getBestProvider(criteria, false);
+		
+		Location location = locManager.getLastKnownLocation(bestProvider);
+		Log.e("-------------- location: ", location!=null?location.toString():"Sin locacion");
+		
+		if(location != null){
+			getPosicionActual(location);
+		}
+		
+		/*
+    	 * Registra el listener en el Location Manager para recibir actualizaciones de locacion de las redes
+    	 * Los parametros 2 y 3 de requestLocationUpdates estan en 0 para indicar que nos de la posicion en vivo
+    	 * con el minimo intervalo de tiempo entre notificaciones.
+    	 * Al usar localizacion por Redes, debe agregarse el permiso android.permission.ACCESS_COARSE_LOCATION
+    	 * en el AndroidManifest.
+    	 */
+//    	locManager.requestLocationUpdates(bestProvider, 20000, 1, locListener);
+    	
+    	//Se crea un listener que hace las llamadas necesarias en callback 
+    	//Nos registramos para recibir actualizaciones de la posición
+    	locListener = new LocationListener() {
+	    	public void onLocationChanged(Location location) {
+	    		locManager.requestLocationUpdates(bestProvider, 20000, 1, this);
+	    		getPosicionActual(location);
+	    		locManager.removeUpdates(this);
+	    	}
+	    	public void onProviderDisabled(String provider){}
+	    	public void onProviderEnabled(String provider){}
+	    	public void onStatusChanged(String provider, int statusProvider, Bundle extras){}
+    	};
+    	
+    	locManager.requestLocationUpdates(bestProvider, 20000, 1, locListener);
+    	locManager.removeUpdates(locListener);
+    }
+	
+	/*
+	 * Este metodo lo que hace es setear una ubicacion basada en el objeto Location que puede tener informacion de alguna posicion anterior
+	 * o la nueva posicion obtenida. El objeto Location tiene en sus atributos la longitud y la latitud, que sirven como parametros para
+	 * la ubicacion que se hace con el objeto GeoPoint
+	 */
+	private void getPosicionActual(Location location) {
+    	if(location != null)
+    	{
+    		Toast.makeText(getApplicationContext(), getResources().getString(R.string.msg_toast_carga_mapa), Toast.LENGTH_LONG).show();
+    		geoPoint = new GeoPoint(new Double(location.getLatitude()*1E6).intValue(), new Double(location.getLongitude()*1E6).intValue());
+    		
+    	}
     }
 	
 	/*
