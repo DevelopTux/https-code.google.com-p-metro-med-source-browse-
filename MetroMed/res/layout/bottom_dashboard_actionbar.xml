@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/BottomActionBarCompat" >
+
+    <TableLayout
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:stretchColumns="0,1" android:layout_gravity="center_vertical">
+	   <TableRow android:layout_width="fill_parent"> 
+	    	<Button
+	        android:id="@+id/buttonDashBoardTwitterBottomBar"
+	        android:background="@drawable/button_dashboard_twitter"
+	        android:src="@drawable/casa_off" android:layout_gravity="center_horizontal" />
+	    	<Button
+	        android:id="@+id/buttonDashBoardInfoBottomBar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/button_dashboard_info"
+	        android:src="@drawable/casa_off" android:layout_gravity="center_horizontal" />
+	   </TableRow>
+   
+</TableLayout>
+    
+     
+</LinearLayout>

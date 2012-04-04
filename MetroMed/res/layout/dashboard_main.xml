@@ -9,5 +9,6 @@
    	<!-- Include Action Bar -->
     <include layout="@layout/actionbar_layout"/>
     <!--  Include menu dashboard -->
-    <include layout="@layout/menu_dashboard"/> 
+    <include layout="@layout/menu_dashboard"/>
+    <include layout="@layout/bottom_dashboard_actionbar"/> 
 </LinearLayout>

@@ -41,4 +41,22 @@
 		\nSin Sisbén: $3.500 cada trayecto\n
 		\nTodos los niños y niñas que midan hasta un metro: No pagan ingreso\n
 	</string>
+	<string name="alertDialogInfoMetroMedTitle">Info Aplicación Metro Medellín</string>
+	<string name="alertDialogInfoMetroMedText">Versión: 1.0.0\n
+	    \nDesarrollado en comunidad en 24 horas #24HAPP por GalaxyMovil y @DroidForumCO\n
+	    \nDiseño Grafico:
+	    \nAndrés Arango
+	    \n@AndresArangoE\n
+	    \nSoftware Craftsman\'s:
+	    \nCarlos Daniel Muñoz
+	    \n@cdmunozi
+	    \nCarlos Andrés Granada
+	    \n@cgranadax\n
+	    \nImagenes e información obtenidas de:
+	    \nMetro de Medellín
+	    \nwww.metrodemedellin.gov.co/\n
+	    \nGoogle Code:	    
+	    \nArtistic License/GPL
+	    \ncode.google.com/p/metro-med/
+	    </string>
 </resources>

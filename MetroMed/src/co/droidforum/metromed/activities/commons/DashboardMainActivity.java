@@ -9,6 +9,8 @@ package co.droidforum.metromed.activities.commons;
 import co.droidforum.metromed.R;
 import co.droidforum.metromed.activities.mapametro.MapaMetroActivity;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import co.droidforum.metromed.activities.alimentadores.AlimentadoresActivity;
 import co.droidforum.metromed.activities.estacionesmapa.EstacionesCercanasActivity;
+import co.droidforum.metromed.application.AplicationContext;
 
 public class DashboardMainActivity extends Activity {
 	/*
@@ -27,6 +30,7 @@ public class DashboardMainActivity extends Activity {
 	private Button buttonEstacionesCercanas;
 	private Button buttonMapaMetro;
 	private Button buttonAlimentadores;
+	private Button buttonDashBoardInfoBottomBar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class DashboardMainActivity extends Activity {
 		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
 		buttonMapaMetro = (Button)findViewById(R.id.buttonMapaMetro);
 		buttonAlimentadores = (Button)findViewById(R.id.buttonAlimentadores);
+		buttonDashBoardInfoBottomBar = (Button)findViewById(R.id.buttonDashBoardInfoBottomBar);
 		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
 		    public void onClick(View v){
 		        Intent intent = new Intent();
@@ -76,5 +81,31 @@ public class DashboardMainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		buttonDashBoardInfoBottomBar.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {			
+				dialogButtonInfo();
+			}
+		});
 	}
+	
+
+ 	/**
+ 	 * Metodo que genera un cuadro de dialogo de alerta con la información de la aplicación, como versión 
+ 	 * desarrolladores, licencia y etc
+ 	 */
+ 	private void dialogButtonInfo() {
+ 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+ 		builder.setCancelable(false)
+ 		       .setPositiveButton(R.string.alertDialogTarifaAceptar, new DialogInterface.OnClickListener() {
+ 		           public void onClick(DialogInterface dialog, int id) {
+ 		                //no hace nada sólo volver a la actividad
+ 		           }
+ 		       });
+ 		AlertDialog alert = builder.create();
+ 		alert.setTitle(R.string.alertDialogInfoMetroMedTitle);
+ 		alert.setMessage(AplicationContext.getValueStringResource(R.string.alertDialogInfoMetroMedText));
+ 		alert.show();
+ 		
+ 	}
 }
