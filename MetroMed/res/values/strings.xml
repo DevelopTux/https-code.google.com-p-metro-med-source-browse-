@@ -59,4 +59,11 @@
 	    \nArtistic License/GPL
 	    \ncode.google.com/p/metro-med/
 	    </string>
+	  <string name="tandresarango">\@AndresArangoE</string>
+	  <string name="tcarlosdaniel">\@cdmunozi</string>
+	  <string name="tcarlosgranada">\@cgranadax</string>
+	  <string name="tdroidforumco">\@DroidForumCO</string>
+	  <string name="twitterurl">https://twitter.com/#!/</string>
+	  <string name="siguenostwitter">Siguenos en Twitter</string>
+	  
 </resources>

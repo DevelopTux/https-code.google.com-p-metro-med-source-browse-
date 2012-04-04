@@ -1,5 +1,10 @@
 package co.droidforum.metromed.activities.adapters;
 
+/**
+ * Clase que define el comportamiento de los objetos ArrayAdapter de la lista de alimentadores
+ * @author DroidForum.co / GalaxyMovil.com / @cgranadax
+ */
+
 import java.util.List;
 
 import co.droidforum.metromed.R;
@@ -53,7 +58,7 @@ public class AlimentadoresListAdapter extends ArrayAdapter<EstacionMetroDTO> {
 		        	
 		        }
 		    });
-		    item.setClickable(true);
+		    //item.setClickable(true);
 	    }	    
 	    return (item);
    }

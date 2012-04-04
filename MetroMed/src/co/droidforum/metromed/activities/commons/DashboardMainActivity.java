@@ -16,8 +16,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.TextView;
+import android.view.ViewGroup;
 import co.droidforum.metromed.activities.alimentadores.AlimentadoresActivity;
 import co.droidforum.metromed.activities.estacionesmapa.EstacionesCercanasActivity;
 import co.droidforum.metromed.application.AplicationContext;
@@ -31,6 +35,7 @@ public class DashboardMainActivity extends Activity {
 	private Button buttonMapaMetro;
 	private Button buttonAlimentadores;
 	private Button buttonDashBoardInfoBottomBar;
+	private Button buttonDashBoardTwitterBottomBar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,7 @@ public class DashboardMainActivity extends Activity {
 		buttonMapaMetro = (Button)findViewById(R.id.buttonMapaMetro);
 		buttonAlimentadores = (Button)findViewById(R.id.buttonAlimentadores);
 		buttonDashBoardInfoBottomBar = (Button)findViewById(R.id.buttonDashBoardInfoBottomBar);
+		buttonDashBoardTwitterBottomBar = (Button)findViewById(R.id.buttonDashBoardTwitterBottomBar);
 		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
 		    public void onClick(View v){
 		        Intent intent = new Intent();
@@ -87,6 +93,12 @@ public class DashboardMainActivity extends Activity {
 				dialogButtonInfo();
 			}
 		});
+		
+		buttonDashBoardTwitterBottomBar.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {			
+				dialogSiguenosTwitter();
+			}
+		});
 	}
 	
 
@@ -108,4 +120,75 @@ public class DashboardMainActivity extends Activity {
  		alert.show();
  		
  	}
+ 	
+ 	/**
+ 	 * Metodo que construye la caja de dialogo para el siguenos en twitter
+ 	 * Fuente: http://stackoverflow.com/questions/3920640/how-to-add-icon-in-alert-dialog-before-each-item
+ 	 * @author @cgranadax
+ 	 */
+ 	private void dialogSiguenosTwitter(){
+ 		final SiguenosItem[] items = {
+ 				new SiguenosItem(getString(R.string.tdroidforumco), R.drawable.droidforumco60),
+ 			    new SiguenosItem(getString(R.string.tandresarango), R.drawable.andy60),
+ 			    new SiguenosItem(getString(R.string.tcarlosdaniel), R.drawable.cdmunoz60),
+ 			    new SiguenosItem(getString(R.string.tcarlosgranada), R.drawable.cgranadax60),
+ 			};
+
+		ListAdapter adapter = new ArrayAdapter<SiguenosItem>(
+		    this,
+		    android.R.layout.select_dialog_item,
+		    android.R.id.text1,
+		    items){
+		        public View getView(int position, View convertView, ViewGroup parent) {
+		            //User super class to create the View
+		            View v = super.getView(position, convertView, parent);
+		            TextView tv = (TextView)v.findViewById(android.R.id.text1);
+
+		            //Put the image on the TextView
+		            tv.setCompoundDrawablesWithIntrinsicBounds(items[position].icon, 0, 0, 0);
+
+		            //Add margin between image and text (support various screen densities)
+		            int dp5 = (int) (5 * getResources().getDisplayMetrics().density + 0.5f);
+		            tv.setCompoundDrawablePadding(dp5);
+
+		            return v;
+		        }
+		    };
+
+		new AlertDialog.Builder(this)
+		    .setTitle(getString(R.string.siguenostwitter))
+		    .setAdapter(adapter, new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int item) {
+		        	Intent intent = new Intent();
+			        intent.setAction(Intent.ACTION_VIEW);
+			        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+			        intent.setData(Uri.parse(getResources().getString(R.string.twitterurl)+items[item].getTwitterU()));
+			        startActivity(intent);
+		        }
+		    }).show();
+ 	}
+ 	
+ 	/**
+ 	 * Clase para pintar los itmes de siguenos en twitter
+ 	 * @author @cgranadax
+ 	 * Fuente: http://stackoverflow.com/questions/3920640/how-to-add-icon-in-alert-dialog-before-each-item
+ 	 */
+ 	public static class SiguenosItem{
+ 	    public final String text;
+ 	    public final int icon;
+ 	    public SiguenosItem(String text, Integer icon) {
+ 	        this.text = text;
+ 	        this.icon = icon;
+ 	    }
+ 	    @Override
+ 	    public String toString() {
+ 	        return text;
+ 	    }
+ 	    
+ 	    public String getTwitterU(){
+ 	    	return this.text.replace("@", "");
+ 	    }
+ 	}
 }
+
+
