@@ -5,10 +5,12 @@ import java.util.List;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.view.MotionEvent;
-import android.widget.Toast;
 import co.droidforum.metromed.R;
 import co.droidforum.metromed.application.AplicationContext;
 import co.droidforum.metromed.application.BusinessContext;
@@ -58,13 +60,20 @@ public class OverlayMapa extends Overlay {
 			projection.toPixels(geoPoint, centro);
 
 			//Definimos el pincel de dibujo
-			Paint p = new Paint();
+			Paint paint = new Paint();
+			paint.setStyle(Paint.Style.FILL);
+			paint.setColor(Color.BLUE);
+			paint.setTextSize(16);
+			paint.setAntiAlias(true);
+			paint.setTypeface(Typeface.MONOSPACE);
+			paint.setTextAlign(Align.CENTER);
 			
 			//Marca con una imagen apuntador como Google Maps
 			Bitmap bm = BitmapFactory.decodeResource(mapView.getResources(),R.drawable.icono_aqui);
 			
 			canvas.drawBitmap(bm, centro.x - bm.getWidth(), 
-					              centro.y - bm.getHeight(), p);
+					              centro.y - bm.getHeight(), paint);
+			canvas.drawText(AplicationContext.getValueStringResource(R.string.usted_esta_aca), centro.x -10, centro.y +10, paint);
 			
 			//pinta las estaciones del metro que estan en la BD
 			setEstacionesMetro(geoPoint, canvas, mapView);
@@ -90,7 +99,13 @@ public class OverlayMapa extends Overlay {
 			projection.toPixels(geoPoint, centro);
 
 			//Definimos el pincel de dibujo
-			Paint p = new Paint();
+			Paint paint = new Paint();
+			paint.setStyle(Paint.Style.FILL);
+			paint.setColor(Color.BLUE);
+			paint.setTextSize(16);
+			paint.setAntiAlias(true);
+			paint.setTypeface(Typeface.MONOSPACE);
+			paint.setTextAlign(Align.CENTER);
 			
 			//Marca con una imagen apuntador como Google Maps dependiendo de la linea
 			Bitmap bm = null;
@@ -111,8 +126,8 @@ public class OverlayMapa extends Overlay {
 			}
 			
 			canvas.drawBitmap(bm, centro.x - bm.getWidth(), 
-					              centro.y - bm.getHeight(), p);
-			
+					              centro.y - bm.getHeight(), paint);
+			canvas.drawText(estacionMetroDTO.getNombre(), centro.x -10, centro.y +10, paint);
 		}
 	}
 	
