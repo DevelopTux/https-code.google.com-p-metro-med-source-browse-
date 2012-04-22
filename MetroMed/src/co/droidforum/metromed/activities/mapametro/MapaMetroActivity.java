@@ -3,12 +3,16 @@ package co.droidforum.metromed.activities.mapametro;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import co.droidforum.metromed.R;
+import co.droidforum.metromed.activities.commons.DashboardMainActivity;
 import co.droidforum.metromed.application.AplicationContext;
 
 public class MapaMetroActivity extends Activity {
@@ -16,6 +20,8 @@ public class MapaMetroActivity extends Activity {
 	 
 	 private Button buttonHorariosBottomBar;
 	 private Button buttonTarifasBottomBar;
+	 private ImageView metroMedLogoImg;
+	 private ImageView galaxyLogoImg;
 	  
      @Override
      public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,29 @@ public class MapaMetroActivity extends Activity {
 			public void onClick(View v) {
 				dialogButtonTarifas();
 			}
+		});
+         
+        //para hacer navegable al home
+        metroMedLogoImg = (ImageView)findViewById(R.id.metromedlogoimg);
+        //Logo Metro Med
+		metroMedLogoImg.setOnClickListener(new View.OnClickListener(){
+		    public void onClick(View v){
+		        Intent intent = new Intent(AplicationContext.getContextApp(), DashboardMainActivity.class);
+		        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		        startActivity(intent);
+		    }
+		});
+		
+		//para cargar web de galaxy movil
+		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
+		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
+		    public void onClick(View v){
+		        Intent intent = new Intent();
+		        intent.setAction(Intent.ACTION_VIEW);
+		        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+		        intent.setData(Uri.parse(getResources().getString(R.string.url_galaxymovil)));
+		        startActivity(intent);
+		    }
 		});
      }
      

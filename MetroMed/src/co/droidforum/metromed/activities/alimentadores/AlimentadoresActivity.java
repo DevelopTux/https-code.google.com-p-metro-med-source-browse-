@@ -2,27 +2,22 @@ package co.droidforum.metromed.activities.alimentadores;
 
 import java.util.List;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import co.droidforum.metromed.R;
 import co.droidforum.metromed.activities.adapters.AlimentadoresListAdapter;
 import co.droidforum.metromed.activities.commons.DashboardMainActivity;
-import co.droidforum.metromed.activities.mapametro.MapaMetroActivity;
 import co.droidforum.metromed.application.AplicationContext;
 import co.droidforum.metromed.application.BusinessContext;
 import co.droidforum.metromed.application.GenericActivity;
 import co.droidforum.metromed.bo.EstacionesMetroBO;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
-import co.droidforum.metromed.dto.*;
+import co.droidforum.metromed.dto.EstacionMetroDTO;
 
 public class AlimentadoresActivity extends GenericActivity {
 	
@@ -32,6 +27,9 @@ public class AlimentadoresActivity extends GenericActivity {
 	private Button buttonLineaJ;
 	private AlimentadoresListAdapter alimentadoresListAdapter;
 	EstacionesMetroBO estacionMetroBO;
+	private ImageView metroMedLogoImg;
+	private ImageView galaxyLogoImg;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);		
@@ -66,6 +64,28 @@ public class AlimentadoresActivity extends GenericActivity {
 			}
 		});
 		
+		//para hacer navegable al home
+        metroMedLogoImg = (ImageView)findViewById(R.id.metromedlogoimg);
+        //Logo Metro Med
+		metroMedLogoImg.setOnClickListener(new View.OnClickListener(){
+		    public void onClick(View v){
+		        Intent intent = new Intent(AplicationContext.getContextApp(), DashboardMainActivity.class);
+		        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		        startActivity(intent);
+		    }
+		});
+		
+		//para cargar web de galaxy movil
+		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
+		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
+		    public void onClick(View v){
+		        Intent intent = new Intent();
+		        intent.setAction(Intent.ACTION_VIEW);
+		        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+		        intent.setData(Uri.parse(getResources().getString(R.string.url_galaxymovil)));
+		        startActivity(intent);
+		    }
+		});
 	}
 	
 	public void setEstacionesListAdapter(String linea){

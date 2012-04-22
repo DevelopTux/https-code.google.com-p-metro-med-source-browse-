@@ -4,10 +4,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:clickable="false"
+        android:clickable="true"
         android:paddingLeft="15dip"
         android:scaleType="center"
-        android:src="@drawable/logo_metro_med"/>
+        android:src="@drawable/logo_metro_med" android:id="@+id/metromedlogoimg"/>
     
     <ImageView
         android:layout_width="wrap_content"

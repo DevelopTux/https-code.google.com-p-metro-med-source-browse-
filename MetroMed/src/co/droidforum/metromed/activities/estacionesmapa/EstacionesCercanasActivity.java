@@ -3,14 +3,20 @@ package co.droidforum.metromed.activities.estacionesmapa;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import co.droidforum.metromed.R;
+import co.droidforum.metromed.activities.commons.DashboardMainActivity;
+import co.droidforum.metromed.application.AplicationContext;
 import co.droidforum.metromed.utils.mapa.OverlayMapa;
 
 import com.google.android.maps.GeoPoint;
@@ -41,11 +47,36 @@ public class EstacionesCercanasActivity extends MapActivity {
 	private LocationManager locManager = null;
 	private LocationListener locListener = null;
 	String bestProvider = "";
+	private ImageView metroMedLogoImg;
+	private ImageView galaxyLogoImg;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.estaciones_cercanas);
+		
+		//para hacer navegable al home
+        metroMedLogoImg = (ImageView)findViewById(R.id.metromedlogoimg);
+        //Logo Metro Med
+		metroMedLogoImg.setOnClickListener(new View.OnClickListener(){
+		    public void onClick(View v){
+		        Intent intent = new Intent(AplicationContext.getContextApp(), DashboardMainActivity.class);
+		        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		        startActivity(intent);
+		    }
+		});
+		
+		//para cargar web de galaxy movil
+		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
+		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
+		    public void onClick(View v){
+		        Intent intent = new Intent();
+		        intent.setAction(Intent.ACTION_VIEW);
+		        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+		        intent.setData(Uri.parse(getResources().getString(R.string.url_galaxymovil)));
+		        startActivity(intent);
+		    }
+		});
 		
 		comenzarLocalizacion();
 		
