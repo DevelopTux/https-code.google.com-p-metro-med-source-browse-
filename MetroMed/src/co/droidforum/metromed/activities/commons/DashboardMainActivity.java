@@ -6,9 +6,6 @@ package co.droidforum.metromed.activities.commons;
  * @author DroidForum.co / GalaxyMovil.com / @cgranadax
  */
 
-import co.droidforum.metromed.R;
-import co.droidforum.metromed.activities.mapametro.MapaMetroActivity;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,21 +13,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import android.view.ViewGroup;
+import co.droidforum.metromed.R;
 import co.droidforum.metromed.activities.alimentadores.AlimentadoresActivity;
 import co.droidforum.metromed.activities.estacionesmapa.EstacionesCercanasActivity;
+import co.droidforum.metromed.activities.mapametro.MapaMetroActivity;
 import co.droidforum.metromed.application.AplicationContext;
+import co.droidforum.metromed.application.GenericActivity;
 
-public class DashboardMainActivity extends Activity {
+public class DashboardMainActivity extends GenericActivity {
 	/*
 	 * Elementos de la pantalla
 	 */
-	private ImageView galaxyLogoImg;
 	private Button buttonEstacionesCercanas;
 	private Button buttonMapaMetro;
 	private Button buttonAlimentadores;
@@ -46,20 +44,12 @@ public class DashboardMainActivity extends Activity {
 		/*
 		 * Programando los eventos de cada elemento de la pantalla 
 		 */
-		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
+		
 		buttonMapaMetro = (Button)findViewById(R.id.buttonMapaMetro);
 		buttonAlimentadores = (Button)findViewById(R.id.buttonAlimentadores);
 		buttonDashBoardInfoBottomBar = (Button)findViewById(R.id.buttonDashBoardInfoBottomBar);
 		buttonDashBoardTwitterBottomBar = (Button)findViewById(R.id.buttonDashBoardTwitterBottomBar);
-		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
-		    public void onClick(View v){
-		        Intent intent = new Intent();
-		        intent.setAction(Intent.ACTION_VIEW);
-		        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-		        intent.setData(Uri.parse(getResources().getString(R.string.url_galaxymovil)));
-		        startActivity(intent);
-		    }
-		});
+		
 		
 		/*
 		 * Evento para cargar actividad para ver las estaciones cercanas a mi

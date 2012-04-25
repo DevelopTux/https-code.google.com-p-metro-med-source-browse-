@@ -163,7 +163,7 @@ public class EstacionesCercanasActivity extends MapActivity {
 	private void getPosicionActual(Location location) {
     	if(location != null)
     	{
-    		Toast.makeText(getApplicationContext(), getResources().getString(R.string.msg_toast_carga_mapa), Toast.LENGTH_LONG).show();
+    		Toast.makeText(getApplicationContext(), getResources().getString(R.string.msg_toast_carga_mapa), Toast.LENGTH_SHORT).show();
     		geoPoint = new GeoPoint(new Double(location.getLatitude()*1E6).intValue(), new Double(location.getLongitude()*1E6).intValue());
     		
     	}

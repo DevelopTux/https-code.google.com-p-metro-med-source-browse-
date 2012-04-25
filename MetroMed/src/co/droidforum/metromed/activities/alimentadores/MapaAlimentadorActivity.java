@@ -1,11 +1,12 @@
 package co.droidforum.metromed.activities.alimentadores;
 
 import co.droidforum.metromed.R;
+import co.droidforum.metromed.application.GenericActivity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class MapaAlimentadorActivity extends Activity {
+public class MapaAlimentadorActivity extends GenericActivity {
 	 WebView mWebView = null;
 	  
      @Override
