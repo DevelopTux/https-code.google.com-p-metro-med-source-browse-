@@ -3,11 +3,9 @@ package co.droidforum.metromed.utils.mapa;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -22,12 +20,10 @@ import android.view.Window;
 import android.widget.ListView;
 import android.widget.Toast;
 import co.droidforum.metromed.R;
-import co.droidforum.metromed.activities.adapters.AlimentadoresListAdapter;
 import co.droidforum.metromed.activities.adapters.LugaresCercanosListAdapter;
 import co.droidforum.metromed.application.AplicationContext;
 import co.droidforum.metromed.application.BusinessContext;
 import co.droidforum.metromed.bo.EstacionesMetroBO;
-import co.droidforum.metromed.bo.FoursquareBO;
 import co.droidforum.metromed.dto.EstacionMetroDTO;
 import co.droidforum.metromed.dto.FoursquareVenueDTO;
 
@@ -155,6 +151,15 @@ public class OverlayMapa extends Overlay {
 		return imagenMap;
 	}
 	
+	/*
+	 * Se sobre escribe el metodo onTap para que al hacer tap se valide si se hace sobre un ícono para así cargar los
+	 * sitios cercanos a éste
+	 * 
+	 * @cdmunoz
+	 * 
+	 * (non-Javadoc)
+	 * @see com.google.android.maps.Overlay#onTap(com.google.android.maps.GeoPoint, com.google.android.maps.MapView)
+	 */
 	@Override
 	public boolean onTap(GeoPoint point, MapView mapView) 
 	{

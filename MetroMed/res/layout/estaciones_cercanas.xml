@@ -6,12 +6,24 @@
     android:background="@drawable/background"
     android:weightSum="1">
     <include layout="@layout/actionbar_layout"/>
-    
-    <com.google.android.maps.MapView
-		android:id="@+id/mapaEstacionesCercanas" 
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent" 
-		android:apiKey="07wVP-KBj2kC_Bf_RSlXXabKAwDc_u7Cz1TPgpg"
-		android:clickable="true" />
-
+	
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent" android:layout_height="fill_parent">   
+	    
+	    <com.google.android.maps.MapView
+			android:id="@+id/mapaEstacionesCercanas" 
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" 
+			android:apiKey="0QQ0gaJa697b12Fb_k22Y6MdLHxs2Sp6dycZEaQ"
+			android:clickable="true" />
+	    
+	    <ImageButton
+	        android:id="@+id/imgBtn_Center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true"
+	        android:layout_toRightOf="@+id/btn_center"
+	        android:src="@android:drawable/ic_menu_mylocation" android:layout_alignParentLeft="true" android:layout_below="@id/mapaEstacionesCercanas"/>
+	    
+	</RelativeLayout>
 </LinearLayout>

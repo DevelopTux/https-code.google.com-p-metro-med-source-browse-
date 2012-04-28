@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import co.droidforum.metromed.R;
@@ -49,6 +51,7 @@ public class EstacionesCercanasActivity extends MapActivity {
 	String bestProvider = "";
 	private ImageView metroMedLogoImg;
 	private ImageView galaxyLogoImg;
+	private ImageButton imgBtn_center;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,37 +80,26 @@ public class EstacionesCercanasActivity extends MapActivity {
 		        startActivity(intent);
 		    }
 		});
-		
+		//obtiene la localizacion actual
 		comenzarLocalizacion();
 		
-		//Obtenemos una referencia al control MapView
-		mapView = (MapView)findViewById(R.id.mapaEstacionesCercanas);
-		
-		//Mostramos los controles de zoom sobre el mapa
-		mapView.setBuiltInZoomControls(true);
-		
-		//Seteo la vista del mapa como de trafico
-		mapView.setTraffic(true);
-		
-		/*
-		 * como la ubicacion por defecto en el mapa no se puede modificar, con un
-		 * MapController podemos setear cualquier posicion en longitud y latitud 
-		 */
-		mapController = mapView.getController();
-		
-		//Si hay datos de longitud y latitud ubica en la posicion actual
-		if(geoPoint != null){
-			mapController.setCenter(geoPoint);
-			//el minimo valor del zoom es 1 (vista menor detalle) y el maximo es 21 (vista mayor detalle)
-			mapController.setZoom(15);
-			
-			//Dibuja el punto en el cual estoy ubicado
-			setMyPoint(mapView,geoPoint);
-		}
+		//actualizar el mapa
+		actualizarLocalizacionMapa();
 		
 		Toast.makeText(getApplicationContext(), getResources().getString(R.string.msg_toast_tocar_estacion), Toast.LENGTH_LONG).show();
 		
-		
+		//para localizar el mapa en el punto donde estoy
+		imgBtn_center = (ImageButton)findViewById(R.id.imgBtn_Center);
+		imgBtn_center.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//obtiene la ubicación actual de nuevo para garantizar que si se movio, actualice la info
+				comenzarLocalizacion();
+				//actualiza la localizacion en el mapa
+				actualizarLocalizacionMapa();
+			}
+		});
 		
 	}
 	
@@ -173,6 +165,36 @@ public class EstacionesCercanasActivity extends MapActivity {
     		
     	}
     }
+	
+	/*
+	 * Despues de estar localizados, actualiza la info en el mapa
+	 */
+	private void actualizarLocalizacionMapa(){
+		//Obtenemos una referencia al control MapView
+		mapView = (MapView)findViewById(R.id.mapaEstacionesCercanas);
+		
+		//Mostramos los controles de zoom sobre el mapa
+		mapView.setBuiltInZoomControls(true);
+		
+		//Seteo la vista del mapa como de trafico
+		mapView.setTraffic(true);
+		
+		/*
+		 * como la ubicacion por defecto en el mapa no se puede modificar, con un
+		 * MapController podemos setear cualquier posicion en longitud y latitud 
+		 */
+		mapController = mapView.getController();
+		
+		//Si hay datos de longitud y latitud ubica en la posicion actual
+		if(geoPoint != null){
+			mapController.setCenter(geoPoint);
+			//el minimo valor del zoom es 1 (vista menor detalle) y el maximo es 21 (vista mayor detalle)
+			mapController.setZoom(15);
+			
+			//Dibuja el punto en el cual estoy ubicado
+			setMyPoint(mapView,geoPoint);
+		}
+	}
 	
 	/*
 	 * Basado en el mapa actual y la posicion actual marcada como centro del mapa, en ese punto ubico un icono de posicion
