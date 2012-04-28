@@ -66,4 +66,16 @@
 	  <string name="twitterurl">https://twitter.com/#!/</string>
 	  <string name="siguenostwitter">Follow us on Twitter</string>
 	  
+	  <!-- 	  Integracion con Foursquare -->
+	  <string name="msg_toast_tocar_estacion">Tap the station icon to get the nearby  places and more info...</string>
+	  <string name="msg_consultando_fsq">Foursquare Searching...</string>
+	  <string name="title_sitios_cercanos">Nearby places</string>
+	  <string name="err_carga_sitios_cercanos">Failed to load nearby places</string>
+	  <string name="no_hay_sitios_cercanos">No nearby places available</string>
+	  <string name="cerca_a">Nearby To:</string>
+	  <string name="foursquare_api_url">https://api.foursquare.com/v2/venues/search?ll=</string>
+<!-- 	  Abstangace de usar este codigo en caso de que este construyendo su propia app solicitelo a foursquare en 1 minuto en https://developer.foursquare.com/, esto es ejemplificador -->
+	  <string name="xid">client_id=OZ1ET3SZYXJOWSUEG4LK3UGVPUGQCJNANB1V2BBHKV0GBB1Q</string>
+	  <string name="xsec">client_secret=NLPLUMK4MQOGOTVC3A3ZLQ3NPCETNHOFSYOCHAI2ZPN4SCN2</string>
+	  
 </resources>

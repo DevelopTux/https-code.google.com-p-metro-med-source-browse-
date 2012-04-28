@@ -6,7 +6,7 @@
     <string name="dashboard_metro_maps">Mapa Metro</string>
     <string name="dashboard_metro_around">Estaciones cercanas</string>
     <string name="url_galaxymovil">http://www.galaxymovil.com</string>
-    <string name="msg_toast_carga_mapa">Obteniendo la ubicación actual ... </string>
+    <string name="msg_toast_carga_mapa">Obteniendo la ubicación actual ... </string> 
     <string name="linea_A_validacion">A</string>
     <string name="linea_B_validacion">B</string>
     <string name="linea_J_validacion">J</string>
@@ -65,5 +65,20 @@
 	  <string name="tdroidforumco">\@DroidForumCO</string>
 	  <string name="twitterurl">https://twitter.com/#!/</string>
 	  <string name="siguenostwitter">Siguenos en Twitter</string>
+	  <string name="poweredby">Powered By:</string>
+<!-- 	  Integracion con Foursquare -->
+	  <string name="msg_toast_tocar_estacion">Toque el icono de una estación cercana para obtener mas información...</string>
+	  <string name="msg_consultando_fsq">Consultando Foursquare...</string>
+	  <string name="title_sitios_cercanos">Sitios cercanos</string>
+	  <string name="err_carga_sitios_cercanos">Error cargando sitios cercanos</string>
+	  <string name="no_hay_sitios_cercanos">No hay sitios cercanos disponibles</string>
+	  <string name="cerca_a">Cerca A:</string>
+	  <string name="foursquare_api_url">https://api.foursquare.com/v2/venues/search?ll=</string>
+<!-- 	  Abstangace de usar este codigo en caso de que este construyendo su propia app solicitelo a foursquare en 1 minuto en https://developer.foursquare.com/, esto es ejemplificador -->
+	  <string name="xid">client_id=OZ1ET3SZYXJOWSUEG4LK3UGVPUGQCJNANB1V2BBHKV0GBB1Q</string>
+	  <string name="xsec">client_secret=NLPLUMK4MQOGOTVC3A3ZLQ3NPCETNHOFSYOCHAI2ZPN4SCN2</string>
+	  
+	  
+	  
 	  
 </resources>

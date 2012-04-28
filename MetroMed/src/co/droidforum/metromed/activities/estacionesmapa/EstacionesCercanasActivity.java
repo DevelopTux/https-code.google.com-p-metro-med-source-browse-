@@ -99,11 +99,16 @@ public class EstacionesCercanasActivity extends MapActivity {
 		if(geoPoint != null){
 			mapController.setCenter(geoPoint);
 			//el minimo valor del zoom es 1 (vista menor detalle) y el maximo es 21 (vista mayor detalle)
-			mapController.setZoom(14);
+			mapController.setZoom(15);
 			
 			//Dibuja el punto en el cual estoy ubicado
 			setMyPoint(mapView,geoPoint);
 		}
+		
+		Toast.makeText(getApplicationContext(), getResources().getString(R.string.msg_toast_tocar_estacion), Toast.LENGTH_LONG).show();
+		
+		
+		
 	}
 	
 	/*

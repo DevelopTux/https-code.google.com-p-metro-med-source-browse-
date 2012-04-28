@@ -2,19 +2,20 @@ package co.droidforum.metromed.bo;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.StringTokenizer;
-
 import javax.inject.Inject;
-
 import android.content.ContentValues;
 import android.content.res.Resources.NotFoundException;
 import co.droidforum.metromed.R;
 import co.droidforum.metromed.application.AplicationContext;
+import co.droidforum.metromed.application.BusinessContext;
 import co.droidforum.metromed.application.BusinessObject;
 import co.droidforum.metromed.dao.EstacionesDAO;
 import co.droidforum.metromed.dto.EstacionMetroDTO;
+import co.droidforum.metromed.dto.FoursquareVenueDTO;
 
 
 /**
@@ -30,6 +31,7 @@ public class EstacionesMetroBO {
 
 	//hace el llamado directo al dao, requiere importar las libs de guice y javax.inject
 	@Inject EstacionesDAO estacionesDAO;
+	FoursquareBO foursquareBO = BusinessContext.getBean(FoursquareBO.class);
 	
 	/**
 	 * Obtiene todas las estaciones de metro configuradas en la tabla
@@ -97,4 +99,20 @@ public class EstacionesMetroBO {
 		    System.err.println("Failed to open microlog property file");
 		}
 	}
+	
+	/**
+	 * Metodo para obtener los lugares cercanos con Foursquare
+	 * @author Carlos Granada | @cgranadax
+	 * @since: 27/04/2012
+	 * @param latitude
+	 * @param longitude
+	 * @return
+	 * @throws Exception
+	 */	
+	public ArrayList<FoursquareVenueDTO> getNearby(double latitude, double longitude) throws Exception {
+		return foursquareBO.getNearby(latitude, longitude);
+	}
+	
+	
+	
 }

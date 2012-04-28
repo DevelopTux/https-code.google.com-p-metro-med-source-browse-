@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/icono_a50on"
+    <item android:drawable="@drawable/icono_a_on"
           android:state_pressed="true" />
-    <item android:drawable="@drawable/icono_a50"
+    <item android:drawable="@drawable/icono_a_off"
           android:state_focused="true" />
-    <item android:drawable="@drawable/icono_a50" />
+    <item android:drawable="@drawable/icono_a_off" />
 </selector>
