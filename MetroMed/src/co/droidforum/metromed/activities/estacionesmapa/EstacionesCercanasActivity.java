@@ -205,7 +205,13 @@ public class EstacionesCercanasActivity extends MapActivity {
 		//Añadimos la capa de marcas
 		List<Overlay> capas = mapView.getOverlays();
 		OverlayMapa overlayMapa = new OverlayMapa(geoPoint,projection);
-		capas.add(overlayMapa);
+		//si hay capas, las elimina y agrega la nueva
+		if(!capas.isEmpty()){
+			capas.clear();
+			capas.add(overlayMapa);
+		}else{
+			capas.add(overlayMapa);
+		}
 		//para redibujar el mapa y todas sus capas
 		mapView.postInvalidate();
 	}
