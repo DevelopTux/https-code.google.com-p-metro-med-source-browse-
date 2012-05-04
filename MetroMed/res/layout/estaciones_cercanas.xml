@@ -14,7 +14,7 @@
 			android:id="@+id/mapaEstacionesCercanas" 
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent" 
-			android:apiKey="0QQ0gaJa697b12Fb_k22Y6MdLHxs2Sp6dycZEaQ"
+			android:apiKey="0QQ0gaJa697aKjRutzd3mEe9HYte7Lkock86YGA"
 			android:clickable="true" />
 	    
 	    <ImageButton
