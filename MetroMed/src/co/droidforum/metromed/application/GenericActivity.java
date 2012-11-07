@@ -11,7 +11,7 @@ import co.droidforum.metromed.activities.commons.DashboardMainActivity;
 
 public abstract class GenericActivity extends Activity {
 	
-	private ImageView galaxyLogoImg;
+	private ImageView droidforumLogoImg;
 	private ImageView metroMedLogoImg;
 	
 	
@@ -21,7 +21,6 @@ public abstract class GenericActivity extends Activity {
 	private static GenericActivity actualActivity;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		actualActivity = this;
 	}
@@ -41,14 +40,14 @@ public abstract class GenericActivity extends Activity {
 
 		super.onPostCreate(savedInstanceState);
 		
-		//para hacer navegable a la pagina de GalaxyMovil
-		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
-		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
+		//para hacer navegable a la pagina de droidforum
+		droidforumLogoImg = (ImageView)findViewById(R.id.droidforumlogoimg);
+		droidforumLogoImg.setOnClickListener(new View.OnClickListener(){
 		    public void onClick(View v){
 		        Intent intent = new Intent();
 		        intent.setAction(Intent.ACTION_VIEW);
 		        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-		        intent.setData(Uri.parse(getResources().getString(R.string.url_galaxymovil)));
+		        intent.setData(Uri.parse(getResources().getString(R.string.url_droidforum)));
 		        startActivity(intent);
 		    }
 		});

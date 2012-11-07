@@ -5,7 +5,7 @@
     <!-- DashBoard Buttons Strings-->
     <string name="dashboard_metro_maps">Mapa Metro</string>
     <string name="dashboard_metro_around">Estaciones cercanas</string>
-    <string name="url_galaxymovil">http://www.galaxymovil.com</string>
+    <string name="url_droidforum">http://empresa.droidforum.co</string>
     <string name="msg_toast_carga_mapa">Obteniendo la ubicación actual ... </string> 
     <string name="linea_A_validacion">A</string>
     <string name="linea_B_validacion">B</string>
@@ -43,7 +43,7 @@
 	</string>
 	<string name="alertDialogInfoMetroMedTitle">Info Aplicación Metro Medellín</string>
 	<string name="alertDialogInfoMetroMedText">Versión: 1.1.0\n
-	    \nDesarrollado en comunidad en 24 horas #24HAPP por GalaxyMovil y @DroidForumCO\n
+	    \nDesarrollado en comunidad en 24 horas #24HAPP por @DroidForumCO\n
 	    \nDiseño Grafico:
 	    \nAndrés Arango
 	    \n@AndresArangoE\n
@@ -63,7 +63,6 @@
 	  <string name="tcarlosdaniel">\@cdmunozi</string>
 	  <string name="tcarlosgranada">\@cgranadax</string>
 	  <string name="tdroidforumco">\@DroidForumCO</string>
-	  <string name="tgalaxymovilco">\@GalaxyMovilCO</string>
 	  <string name="twitterurl">https://twitter.com/#!/</string>
 	  <string name="siguenostwitter">Siguenos en Twitter</string>
 	  <string name="poweredby">Powered By:</string>

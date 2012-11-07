@@ -37,7 +37,6 @@ public class DashboardMainActivity extends GenericActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dashboard_main);
 		
@@ -118,7 +117,6 @@ public class DashboardMainActivity extends GenericActivity {
  	 */
  	private void dialogSiguenosTwitter(){
  		final SiguenosItem[] items = {
- 				new SiguenosItem(getString(R.string.tgalaxymovilco), R.drawable.galaxymovil60),
  				new SiguenosItem(getString(R.string.tdroidforumco), R.drawable.droidforumco60),
  			    new SiguenosItem(getString(R.string.tandresarango), R.drawable.andy60),
  			    new SiguenosItem(getString(R.string.tcarlosdaniel), R.drawable.cdmunoz60),

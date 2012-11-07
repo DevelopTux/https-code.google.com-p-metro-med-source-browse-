@@ -5,7 +5,7 @@
     <!-- DashBoard Buttons Strings-->
     <string name="dashboard_metro_maps">Metro Map</string>
     <string name="dashboard_metro_around">Nearby Stations</string>
-    <string name="url_galaxymovil">http://www.galaxymovil.com</string>
+    <string name="url_droidforum">http://empresa.droidforum.co</string>
     <string name="msg_toast_carga_mapa">Getting current location ... </string>
     <string name="linea_A_validacion">A</string>
     <string name="linea_B_validacion">B</string>
@@ -43,7 +43,7 @@
 	</string>
 	<string name="alertDialogInfoMetroMedTitle">Metro Medellín\'s App Info</string>
 	<string name="alertDialogInfoMetroMedText">Version: 1.1.0\n
-	    \nDeveloped in community in 24 hours #24HAPP by GalaxyMovil and @DroidForumCO\n
+	    \nDeveloped in community in 24 hours #24HAPP by @DroidForumCO\n
 	    \nGraphic Design:
 	    \nAndrés Arango
 	    \n@AndresArangoE\n

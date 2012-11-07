@@ -28,7 +28,7 @@ public class AlimentadoresActivity extends GenericActivity {
 	private AlimentadoresListAdapter alimentadoresListAdapter;
 	EstacionesMetroBO estacionMetroBO;
 	private ImageView metroMedLogoImg;
-	private ImageView galaxyLogoImg;
+	private ImageView droidforumLogoImg;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,14 +75,14 @@ public class AlimentadoresActivity extends GenericActivity {
 		    }
 		});
 		
-		//para cargar web de galaxy movil
-		galaxyLogoImg = (ImageView)findViewById(R.id.galaxylogoimg);
-		galaxyLogoImg.setOnClickListener(new View.OnClickListener(){
+		//para cargar web de droidforum
+		droidforumLogoImg = (ImageView)findViewById(R.id.droidforumlogoimg);
+		droidforumLogoImg.setOnClickListener(new View.OnClickListener(){
 		    public void onClick(View v){
 		        Intent intent = new Intent();
 		        intent.setAction(Intent.ACTION_VIEW);
 		        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-		        intent.setData(Uri.parse(getResources().getString(R.string.url_galaxymovil)));
+		        intent.setData(Uri.parse(getResources().getString(R.string.url_droidforum)));
 		        startActivity(intent);
 		    }
 		});
